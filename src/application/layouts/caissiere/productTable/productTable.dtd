@@ -1,0 +1,86 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<!--
+    TODO define vocabulary identification
+    PUBLIC ID: -//vendor//vocabulary//EN
+    SYSTEM ID: http://server/path/productTable.dtd
+
+-->
+
+<!--
+    An example how to use this DTD from your XML document:
+
+    <?xml version="1.0"?>
+
+    <!DOCTYPE AnchorPane SYSTEM "productTable.dtd">
+
+    <AnchorPane>
+    ...
+    </AnchorPane>
+-->
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT AnchorPane (stylesheets|children)*>
+<!ATTLIST AnchorPane
+    id CDATA #IMPLIED
+    prefHeight CDATA #IMPLIED
+    prefWidth CDATA #IMPLIED
+    styleClass CDATA #IMPLIED
+    style CDATA #IMPLIED
+    xmlns:fx CDATA #IMPLIED
+    xmlns CDATA #IMPLIED
+    fx:controller CDATA #IMPLIED
+  >
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT stylesheets (URL)*>
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT URL EMPTY>
+<!ATTLIST URL
+    value CDATA #IMPLIED
+  >
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT children (VBox|AnchorPane|HBox|JFXTextField|TableView)*>
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT VBox (children)*>
+<!ATTLIST VBox
+    layoutX CDATA #IMPLIED
+    layoutY CDATA #IMPLIED
+    prefHeight CDATA #IMPLIED
+    prefWidth CDATA #IMPLIED
+    AnchorPane.bottomAnchor CDATA #IMPLIED
+    AnchorPane.leftAnchor CDATA #IMPLIED
+    AnchorPane.rightAnchor CDATA #IMPLIED
+    AnchorPane.topAnchor CDATA #IMPLIED
+  >
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT HBox (children)*>
+<!ATTLIST HBox
+    layoutX CDATA #IMPLIED
+    layoutY CDATA #IMPLIED
+    prefHeight CDATA #IMPLIED
+    prefWidth CDATA #IMPLIED
+    style CDATA #IMPLIED
+    fx:id CDATA #IMPLIED
+  >
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT JFXTextField EMPTY>
+<!ATTLIST JFXTextField
+    prefHeight CDATA #IMPLIED
+    prefWidth CDATA #IMPLIED
+    style CDATA #IMPLIED
+    fx:id CDATA #IMPLIED
+  >
+
+<!--- Put your DTDDoc comment here. -->
+<!ELEMENT TableView EMPTY>
+<!ATTLIST TableView
+    prefHeight CDATA #IMPLIED
+    prefWidth CDATA #IMPLIED
+    fx:id CDATA #IMPLIED
+  >

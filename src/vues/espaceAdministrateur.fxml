@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.EspaceAdministrateurController">
+   <children>
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="680.0" prefWidth="1100.0">
+         <children>
+            <Separator layoutX="269.0" layoutY="120.0" orientation="VERTICAL" prefHeight="544.0" prefWidth="45.0" />
+            <VBox layoutX="14.0" layoutY="119.0" prefHeight="561.0" prefWidth="250.0" style="-fx-background-color: #eee;">
+               <children>
+                  <JFXButton fx:id="stocks" focusTraversable="false" onAction="#onStocks" prefHeight="140.0" prefWidth="340.0" style="-fx-border-color: teal;" text="%stock">
+                     <VBox.margin>
+                        <Insets bottom="5.0" />
+                     </VBox.margin>
+                  </JFXButton>
+                  <JFXButton fx:id="ventes" focusTraversable="false" onAction="#onVentes" prefHeight="140.0" prefWidth="340.0" style="-fx-border-color: teal;" text="%compte">
+                     <VBox.margin>
+                        <Insets bottom="5.0" />
+                     </VBox.margin>
+                  </JFXButton>
+                  <JFXButton fx:id="ajouterUtilisateur" focusTraversable="false" onAction="#onAjouterUtilisateur" prefHeight="140.0" prefWidth="340.0" style="-fx-border-color: teal;" text="%addUser">
+                     <VBox.margin>
+                        <Insets bottom="5.0" />
+                     </VBox.margin>
+                  </JFXButton>
+                  <JFXButton fx:id="listeUtilisateurs" focusTraversable="false" onAction="#onListeUtilisateurs" prefHeight="140.0" prefWidth="340.0" style="-fx-border-color: teal;" text="%userList">
+                     <VBox.margin>
+                        <Insets bottom="5.0" />
+                     </VBox.margin>
+                  </JFXButton>
+               </children>
+            </VBox>
+            <Label layoutY="50.0" prefHeight="56.0" prefWidth="1100.0" style="-fx-alignment: center; -fx-font-size: 25; -fx-padding: 10 0 10 0; -fx-background-color: teal;" text="%space" textAlignment="CENTER" textFill="WHITE">
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Label>
+            <AnchorPane fx:id="listeUtilisateur" layoutX="422.0" layoutY="137.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="507.0" prefWidth="628.0" visible="false">
+               <children>
+                  <Label layoutX="266.0" layoutY="18.0" text="%listeUser" textFill="TEAL" underline="true">
+                     <font>
+                        <Font name="System Bold Italic" size="20.0" />
+                     </font>
+                  </Label>
+                  <TableView fx:id="utilisateurs" layoutX="19.0" layoutY="114.0" prefHeight="386.0" prefWidth="600.0" style="-fx-border-color: teal;" stylesheets="@../styles/style.css">
+                     <columns>
+                        <TableColumn fx:id="nomUtilisateur" prefWidth="225.0" text="%nomC" />
+                        <TableColumn fx:id="poste" prefWidth="200.0" text="%posteC" />
+                        <TableColumn fx:id="IdEmployeColumn" prefWidth="175.0" text="%idEmp" />
+                     </columns>
+                  </TableView>
+                  <JFXTextField fx:id="rechercher" layoutX="80.0" layoutY="69.0" promptText="%rechercher" />
+                  <ImageView fitHeight="28.0" fitWidth="31.0" layoutX="225.0" layoutY="19.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/UserGroup.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="28.0" fitWidth="31.0" layoutX="42.0" layoutY="70.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/Search.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="nouvelUtilisateur" layoutX="301.0" layoutY="125.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="519.0" prefWidth="753.0" style="-fx-border-radius: 30; -fx-border-color: teal;">
+               <children>
+                  <Label alignment="CENTER_RIGHT" layoutX="6.0" layoutY="94.0" prefHeight="25.0" prefWidth="179.0" text="%name">
+                     <font>
+                        <Font name="System Bold Italic" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="278.0" layoutY="18.0" text="%addUsern" textFill="TEAL" underline="true">
+                     <font>
+                        <Font name="System Bold Italic" size="20.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER_RIGHT" layoutX="6.0" layoutY="135.0" prefHeight="25.0" prefWidth="177.0" text="%poste">
+                     <font>
+                        <Font name="System Bold Italic" size="16.0" />
+                     </font>
+                  </Label>
+                  <JFXButton layoutX="264.0" layoutY="424.0" onAction="#Enregistrement" prefHeight="40.0" prefWidth="91.0" style="-fx-border-color: teal;" text="%valider" />
+                  <JFXTextField fx:id="nom" layoutX="241.0" layoutY="83.0" prefHeight="30.0" prefWidth="225.0" promptText="%nomEmploy">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </JFXTextField>
+                  <JFXComboBox fx:id="poste1" layoutX="241.0" layoutY="129.0" prefHeight="31.0" prefWidth="227.0" promptText="%choose" />
+                  <Label alignment="CENTER_RIGHT" layoutX="1.0" layoutY="274.0" prefHeight="25.0" prefWidth="183.0" text="%telProch">
+                     <font>
+                        <Font name="System Bold Italic" size="16.0" />
+                     </font>
+                  </Label>
+                  <Label alignment="CENTER_RIGHT" layoutX="6.0" layoutY="321.0" prefHeight="25.0" prefWidth="179.0" text="%cni">
+                     <font>
+                        <Font name="System Bold Italic" size="16.0" />
+                     </font>
+                  </Label>
+                  <JFXTextField fx:id="adresse" layoutX="241.0" layoutY="179.0" prefHeight="30.0" prefWidth="227.0" promptText="%quarter">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </JFXTextField>
+                  <JFXTextField fx:id="telephone" layoutX="241.0" layoutY="225.0" prefHeight="30.0" prefWidth="227.0">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </JFXTextField>
+                  <JFXTextField fx:id="proche" layoutX="241.0" layoutY="271.0" prefHeight="30.0" prefWidth="227.0">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </JFXTextField>
+                  <Label alignment="CENTER_RIGHT" layoutX="3.0" layoutY="230.0" prefHeight="25.0" prefWidth="179.0" text="%tel">
+                     <font>
+                        <Font name="System Bold Italic" size="16.0" />
+                     </font>
+                  </Label>
+                  <JFXTextField fx:id="cni" layoutX="242.0" layoutY="315.0" prefHeight="30.0" prefWidth="227.0">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </JFXTextField>
+                  <Label alignment="CENTER_RIGHT" layoutX="5.0" layoutY="184.0" prefHeight="25.0" prefWidth="177.0" text="%addr">
+                     <font>
+                        <Font name="System Bold Italic" size="16.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="28.0" fitWidth="31.0" layoutX="236.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/AddUser.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </AnchorPane>
+            <JFXButton fx:id="deconnexion" layoutX="748.0" layoutY="8.0" onAction="#onDeconnexion" style="-fx-border-color: red;" text="%decon" />
+            <JFXButton fx:id="changePassword" layoutX="875.0" layoutY="8.0" onAction="#onChangePassword" style="-fx-border-color: blue;" text="%modif" />
+         </children>
+      </AnchorPane>
+      <Label fx:id="nomUser" layoutX="47.0" layoutY="16.0" prefHeight="21.0" prefWidth="129.0" text="nom">
+         <font>
+            <Font name="Cambria Bold" size="17.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="25.0" fitWidth="27.0" layoutX="10.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/User%20Male.png" />
+         </image>
+      </ImageView>
+   </children>
+</AnchorPane>

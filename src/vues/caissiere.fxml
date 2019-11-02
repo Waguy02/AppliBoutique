@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="680.0" prefWidth="1100.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.CaissiereController">
+   <children>
+      <Label layoutY="47.0" prefHeight="56.0" prefWidth="1102.0" style="-fx-alignment: center; -fx-font-size: 25; -fx-padding: 10 0 10 0; -fx-background-color: teal;" text="%caisse" textAlignment="CENTER" textFill="WHITE">
+         <effect>
+            <DropShadow />
+         </effect>
+      </Label>
+      <JFXButton fx:id="deconnexion" layoutX="633.0" layoutY="10.0" onAction="#onDeconnection" prefHeight="27.0" prefWidth="186.0" style="-fx-border-color: red;" text="%disc" />
+      <JFXButton fx:id="changePassword" layoutX="897.0" layoutY="8.0" onAction="#onChangePasssword" prefHeight="33.0" prefWidth="186.0" style="-fx-border-color: blue;" text="%modif" />
+      <HBox layoutY="103.0" prefHeight="577.0" prefWidth="1100.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="103.0">
+         <children>
+            <AnchorPane fx:id="anchorTable" prefHeight="405.0" prefWidth="1075.0">
+               <children>
+                  <AnchorPane prefHeight="72.0" prefWidth="259.0">
+                     <children>
+                        <ImageView fitHeight="31.0" fitWidth="37.0" layoutX="53.0" layoutY="26.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/Search.png" />
+                           </image>
+                        </ImageView>
+                        <JFXTextField fx:id="rechercher" layoutX="101.0" layoutY="29.0" promptText="%rechercher" />
+                     </children>
+                  </AnchorPane>
+                  <TableView fx:id="tableProd" layoutX="8.0" layoutY="87.0" prefHeight="403.0" prefWidth="1082.0" style="-fx-border-color: teal;" stylesheets="@../styles/style.css">
+                    <columns>
+                      <TableColumn fx:id="idCol" prefWidth="81.0" text="id" />
+                      <TableColumn fx:id="prodCol" prefWidth="261.0" text="%prodname" />
+                        <TableColumn fx:id="quantiteCol" prefWidth="199.0" text="%quantity" />
+                        <TableColumn fx:id="unitCol" prefWidth="169.0" text="%unit" />
+                        <TableColumn fx:id="categorie" prefWidth="370.0" text="%categorie" />
+                    </columns>
+                  </TableView>
+                  <Label alignment="CENTER_RIGHT" layoutX="100.0" layoutY="537.0" prefHeight="25.0" prefWidth="129.0" text="%qte">
+                     <font>
+                        <Font name="System Bold Italic" size="16.0" />
+                     </font>
+                  </Label>
+                  <JFXTextField fx:id="quantité" labelFloat="true" layoutX="243.0" layoutY="531.0" prefHeight="37.0" prefWidth="196.0" promptText="%entrerQte">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </JFXTextField>
+                  <JFXButton fx:id="ajouter" layoutX="460.0" layoutY="534.0" style="-fx-border-color: teal;" text="%add">
+                     <font>
+                        <Font name="System Bold" size="14.0" />
+                     </font>
+                  </JFXButton>
+                  <Text fill="TEAL" layoutX="251.0" layoutY="50.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%listProd" textAlignment="CENTER" underline="true" wrappingWidth="349.896484375">
+                     <font>
+                        <Font name="System Bold" size="20.0" />
+                     </font>
+                  </Text>
+               </children>
+            </AnchorPane>
+         </children>
+      </HBox>
+      <AnchorPane fx:id="anchorPanier" layoutX="623.0" layoutY="53.0" maxWidth="-Infinity" prefHeight="625.0" prefWidth="456.0" style="-fx-background-color: white; -fx-border-style: solid inside; -fx-border-radius: 1em;">
+         <children>
+            <JFXButton fx:id="valider" layoutX="258.0" layoutY="569.0" onAction="#onValider" prefHeight="45.0" prefWidth="186.0" style="-fx-border-color: teal;" text="%valider">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="retirer" layoutX="341.0" layoutY="516.0" prefHeight="27.0" prefWidth="93.0" style="-fx-border-color: teal;" text="%retirer" />
+            <JFXButton fx:id="visualiser" layoutX="14.0" layoutY="516.0" onAction="#visualiser" style="-fx-border-color: teal;" text="%visualiser" />
+            <HBox alignment="CENTER" layoutX="239.0" layoutY="10.0" prefHeight="33.0" prefWidth="225.0" spacing="8.0" style="-fx-border-color: teal; -fx-border-radius: 15;">
+               <children>
+                  <ImageView fitHeight="31.0" fitWidth="55.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/Shopping.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </HBox>
+            <Text layoutX="20.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="%panier">
+               <font>
+                  <Font name="System Bold" size="18.0" />
+               </font>
+            </Text>
+            <TableView fx:id="ligneCommande" layoutX="14.0" layoutY="110.0" prefHeight="391.0" prefWidth="428.0" style="-fx-border-color: teal;" stylesheets="@../styles/style.css">
+              <columns>
+                <TableColumn fx:id="idColumn" prefWidth="86.0" resizable="false" text="id" />
+                <TableColumn fx:id="nomProduitColumn" prefWidth="175.0" resizable="false" text="%prodname" />
+                  <TableColumn fx:id="quantitéColumn" prefWidth="99.0" resizable="false" text="%quantity" />
+                  <TableColumn fx:id="prixColumn" prefWidth="100.0" text="%unit" />
+              </columns>
+            </TableView>
+            <HBox layoutX="7.0" layoutY="585.0" prefHeight="25.0" prefWidth="225.0">
+               <children>
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="%total">
+                     <font>
+                        <Font name="System Bold Italic" size="18.0" />
+                     </font>
+                  </Text>
+                  <Text fx:id="prixTotal" strokeType="OUTSIDE" strokeWidth="0.0" text="0" textAlignment="RIGHT" wrappingWidth="84.93554999071057">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Text>
+                  <Pane prefHeight="25.0" prefWidth="11.0" />
+                  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Fcfa" wrappingWidth="30.7421875">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                  </Text>
+               </children>
+            </HBox>
+            <HBox layoutX="15.0" layoutY="56.0" prefHeight="45.0" prefWidth="449.0">
+               <children>
+                  <Label prefHeight="45.0" prefWidth="185.0" text="Nom du client">
+                     <font>
+                        <Font name="System Bold" size="18.0" />
+                     </font>
+                  </Label>
+                  <Separator orientation="VERTICAL" prefHeight="19.0" prefWidth="44.0" />
+                  <VBox prefHeight="3.0" prefWidth="189.0">
+                     <children>
+                        <JFXTextField fx:id="clientName" prefHeight="45.0" prefWidth="219.0">
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </JFXTextField>
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="56.0" prefWidth="128.0" />
+               </children>
+            </HBox>
+         </children>
+      </AnchorPane>
+      <ImageView fitHeight="25.0" fitWidth="27.0" layoutX="28.0" layoutY="63.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/User%20Male.png" />
+         </image>
+      </ImageView>
+      <Label fx:id="nomUser" layoutX="66.0" layoutY="53.0" prefHeight="33.0" prefWidth="120.0" text="nom">
+         <font>
+            <Font name="Cambria Bold" size="17.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>
