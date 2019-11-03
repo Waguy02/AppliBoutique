@@ -9,12 +9,13 @@ import javafx.geometry.Orientation;
 import javafx.scene.control.Label;
 import javafx.scene.control.Separator;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.HBox;
 
 /**
  *
  * @author test
  */
-public class LabelledTextField extends TextField {
+public class LabelledTextField extends HBox {
     
     
     private String label;

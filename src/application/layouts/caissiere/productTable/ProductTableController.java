@@ -156,7 +156,7 @@ public class ProductTableController implements Initializable {
         addTableColumns(productTable, colID, colLibelle, colCategorie, colQuantite);
 
      
-System.out.println(this.mainController);        
+        System.out.println(this.mainController);        
       enableProductSimpleFiltering(productTable,this.mainController.getListeProduit(),this.searchBarTextField);
 
     }

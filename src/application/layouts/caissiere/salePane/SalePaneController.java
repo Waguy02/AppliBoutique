@@ -121,7 +121,6 @@ public class SalePaneController implements Initializable {
                 try{
                     Integer val=Integer.valueOf(qteField.getText());
                     if(val<=0){qteField.setText("0");return;}
-                    
                     Integer max=prodCombo.getValue().getQuantite();
                     if(val>=max){qteField.setText(String.valueOf(max));
                     return;
@@ -129,6 +128,7 @@ public class SalePaneController implements Initializable {
                 
                 }
              catch(Exception e){
+                 e.printStackTrace();;
                  qteField.setText("0");
              
              }
