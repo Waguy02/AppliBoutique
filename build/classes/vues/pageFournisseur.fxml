@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="509.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.PageFournisseurController">
+   <children>
+      <Label alignment="CENTER" layoutY="12.0" prefHeight="33.0" prefWidth="450.0" style="-fx-background-color: teal;" text="%addFour">
+         <font>
+            <Font name="System Bold" size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="4.0" layoutY="75.0" text="%nom" />
+      <JFXTextField fx:id="nomFournisseur" layoutX="69.0" layoutY="70.0" prefHeight="31.0" prefWidth="139.0" />
+      <Label layoutX="214.0" layoutY="75.0" text="%address" />
+      <JFXTextField fx:id="adresseFournisseur" layoutX="285.0" layoutY="70.0" prefHeight="31.0" prefWidth="139.0" />
+      <Label alignment="CENTER_RIGHT" layoutX="119.0" layoutY="109.0" text="%tel" />
+      <JFXTextField fx:id="phoneFournisseur" layoutX="200.0" layoutY="104.0" />
+      <JFXButton fx:id="ajouterFournisseur" alignment="CENTER" layoutX="167.0" layoutY="468.0" onAction="#ajouterFournissuer" style="-fx-background-color: #12ccff;" text="%add" textAlignment="CENTER">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></JFXButton>
+      <ScrollPane fx:id="espaceProduit" layoutX="41.0" layoutY="169.0" prefHeight="275.0" prefWidth="357.0" style="-fx-border-color: teal;">
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding></ScrollPane>
+   </children>
+</AnchorPane>

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import java.net.URL?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane id="AnchorPane" fx:id="rootAnchor" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.layouts.caissiere.productTable.ProductTableController">
+    <stylesheets>
+        <URL value="@producttable.css" />
+      <URL value="@../../../global_styles/main.css" />
+    </stylesheets>
+   <children>
+      <VBox fx:id="rootVBox" layoutX="194.0" layoutY="100.0" prefHeight="400.0" prefWidth="600.0" styleClass="rootVB" stylesheets="@../../../global_styles/main.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <AnchorPane fx:id="topBar" prefHeight="89.0" prefWidth="600.0" styleClass="topBar">
+               <children>
+                  <HBox fx:id="searchBarHbox" layoutX="33.0" layoutY="29.0" prefHeight="46.0">
+                     <children>
+                        <JFXTextField fx:id="searchBarTextField" prefHeight="43.0" prefWidth="516.0" styleClass="searchBar" />
+                        <JFXButton fx:id="newSaleButton" mnemonicParsing="false" onAction="#startNewSale" prefHeight="49.0" prefWidth="137.0" styleClass="actionButton" text=" " />
+                     </children>
+                  </HBox>
+               </children>
+            </AnchorPane>
+            <TableView fx:id="productTable" prefHeight="310.0" prefWidth="948.0" styleClass="basicTable" />
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

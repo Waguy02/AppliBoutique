@@ -1,0 +1,17 @@
+/*
+ * Empty Stylesheet file.
+ */
+
+.mainFxmlClass {
+
+}
+
+.topHBox {
+    
+    -fx-border-style:solid inside;
+    -fx-padding: 30 10 10 10;
+    -fx-margin-top:30px;
+    -fx-min-width:80%;
+    -fx-border-width:0.5;
+    -fx-border-radius:0.1em;
+        }

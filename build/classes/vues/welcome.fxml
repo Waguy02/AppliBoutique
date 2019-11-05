@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressIndicator?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="265.0" prefWidth="502.0" style="-fx-background-color: white;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllers.WelcomeController">
+   <children>
+      <ImageView fx:id="logo" fitHeight="91.0" fitWidth="91.0" layoutX="194.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/logo.jpg" />
+         </image>
+      </ImageView>
+      <Label fx:id="tensesMaster" layoutX="-2.0" layoutY="52.0" prefHeight="91.0" prefWidth="502.0" style="-fx-font-size: 40px; -fx-font-weight: bold; -fx-font-family: &quot;Comic Sans Ms&quot;; -fx-alignment: center;" text="SuperMarket" textFill="TEAL" />
+      <Label fx:id="copyright" layoutX="3.0" layoutY="237.0" prefHeight="21.0" prefWidth="496.0" style="-fx-font-size: 14Px; -fx-font-weight: bold; -fx-font-family: &quot;Comic Sans Ms&quot;; -fx-alignment: center;" text="Copyright : © 2019 SuperMarket." />
+      <ProgressIndicator fx:id="progressIndicator" layoutX="212.0" layoutY="172.0" prefHeight="53.0" prefWidth="54.0" progress="0.0" AnchorPane.leftAnchor="212.0" AnchorPane.rightAnchor="236.0">
+         <effect>
+            <DropShadow />
+         </effect>
+      </ProgressIndicator>
+      <Label layoutX="-2.0" layoutY="140.0" prefHeight="21.0" prefWidth="496.0" style="-fx-font-size: 14Px; -fx-font-weight: bold; -fx-font-family: &quot;Comic Sans Ms&quot;; -fx-alignment: center;" text="Chargement..." textFill="BLUE" />
+   </children>
+   <effect>
+      <InnerShadow choke="0.13" color="TEAL" height="38.05" radius="16.485" width="29.89" />
+   </effect>
+</AnchorPane>

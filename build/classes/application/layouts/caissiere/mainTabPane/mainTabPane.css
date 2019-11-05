@@ -1,0 +1,96 @@
+/*
+ * Empty Stylesheet file.
+ */
+
+.mainFxmlClass {
+
+}
+
+
+.jfx-tab-pane {
+    -fx-padding:20 20 20 20;
+  -fx-tab-min-width:295px;
+  -fx-tab-max-width:295px;
+  -fx-tab-min-height:60px;
+  
+
+-fx-background-color: linear-gradient(white,lightgray);
+  
+}
+
+
+.tab{
+    
+    
+}
+
+.jfx-tab-pane {
+    -fx-pref-width:10%;
+    
+       
+
+}
+ .jfx-tab-pane .headers-region {
+    -fx-background-color:lightcoral;
+    -fx-padding:20 20 20 20;
+}
+
+.jfx-tab-pane .tab-header-background {
+    -fx-padding:20 20 20 20;
+}
+
+.jfx-tab-pane .tab-selected-line {
+    -fx-stroke: -fx-accent;
+}
+
+.tab-selected-line {
+    -fx-background-color: -fx-focus-color;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.topBar {
+    -fx-min-height:4%;
+    -fx-border-widht:13;
+}
+
+.center{
+    -fx-min-height:100%;
+    -fx-min-width:100%;
+    
+}
+
+.bottomBar {
+       -fx-min-height:4%;
+    -fx-border:solid inside;
+    -fx-border-width:0.6;  
+}
+
+
+.plain{
+   -fx-min-width: 100%;
+   -fx-min-height: 100%;
+   
+}
