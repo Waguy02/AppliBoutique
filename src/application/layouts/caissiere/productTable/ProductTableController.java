@@ -6,7 +6,7 @@
 package application.layouts.caissiere.productTable;
 
 import application.layouts.caissiere.mainTabPane.MainTabPaneController;
-import application.partials.CustomTableColumn;
+import application.partials.table.CustomSimpleColumn;
 import application.partials.IconedLabel;
 import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
@@ -126,8 +126,7 @@ public class ProductTableController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-        
-        
+
       
         
         
@@ -147,17 +146,17 @@ public class ProductTableController implements Initializable {
     
     public void initProductTable() {
         rootVBox.minWidthProperty().bind(rootAnchor.widthProperty());
-
-        CustomTableColumn<Produit, String> colID = new CustomTableColumn("ID", "id", 15.0),
-                colCategorie = new CustomTableColumn("Categorie", "categorie",30.0),
-                colLibelle = new CustomTableColumn("nom", "Nom", 30.0);
-        CustomTableColumn<Produit, Integer> colQuantite = new CustomTableColumn("Quantite", "quantite", 20.0);
+        CustomSimpleColumn<Produit, String> colID = new CustomSimpleColumn("ID", "id", 15.0);
+        CustomSimpleColumn<Produit, String> colCategorie = new CustomSimpleColumn("Categorie", "categorie", 30.0),colLibelle = new CustomSimpleColumn("nom", "Nom",30.0);
+        CustomSimpleColumn<Produit, Integer> colQuantite = new CustomSimpleColumn("Quantite", "quantite", 20.0);
 
         addTableColumns(productTable, colID, colLibelle, colCategorie, colQuantite);
 
      
-        System.out.println(this.mainController);        
-      enableProductSimpleFiltering(productTable,this.mainController.getListeProduit(),this.searchBarTextField);
+        System.out.println(this.searchBarTextField);        
+
+        
+        enableProductSimpleFiltering(productTable,this.mainController.getListeProduit(),this.searchBarTextField);
 
     }
 

@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package application.partials;
+package application.partials.inputs;
 
+import com.jfoenix.controls.JFXTextField;
 import javafx.geometry.Orientation;
 import javafx.scene.control.Label;
 import javafx.scene.control.Separator;
@@ -37,10 +38,15 @@ public class LabelledTextField extends HBox {
         this.textfield = textfield;
     }
     
-    public LabelledTextField(String label,TextField tf){
-        
+    
+    public LabelledTextField(String label){
+        this.textfield=new JFXTextField();
         this.setLabel(label);
-        this.setTextfield(tf);
+        this.init();
+        
+    }
+    
+    public void init(){
         
          Label l=new Label(label);
        l.getStyleClass().add("defaultLabel");
@@ -55,12 +61,19 @@ public class LabelledTextField extends HBox {
       
       
       
-      this.getChildren().add(tf);
-            tf.getStyleClass().add("defaultInput");
+      this.getChildren().add(this.textfield);
+            this.textfield.getStyleClass().add("defaultInput");
         this.getStyleClass().add("defaultLabelled");
       
     
         
+        
+    }
+    public LabelledTextField(String label,TextField tf){
+        
+        this.setLabel(label);
+        this.setTextfield(tf);
+        this.init();
         
     }
     

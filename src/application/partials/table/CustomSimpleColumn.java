@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package application.partials;
+package application.partials.table;
 
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -12,31 +12,23 @@ import javafx.scene.control.cell.PropertyValueFactory;
  *
  * @author test
  */
-public class CustomTableColumn<S,T> extends TableColumn{
+public class CustomSimpleColumn<S,T> extends CustomColumn{
     
     
-    Double widthPercentage;
-
-    public Double getWidthPercentage() {
-        return widthPercentage;
-    }
-
-    public void setWidthPercentage(Double widthPercentage) {
-        this.widthPercentage = widthPercentage;
-    }
-
-    public CustomTableColumn(String text){
+   
+    public CustomSimpleColumn(String text){
         super(text);
     }
     
-    public CustomTableColumn(String text,String targetProperty){
+    public CustomSimpleColumn(String text,String targetProperty){
         super(text);
         this.setCellValueFactory(new PropertyValueFactory<>(targetProperty));
     }
     
     
-    public CustomTableColumn(String text,String targetProperty,Double widthPercentage){
+    public CustomSimpleColumn(String text,String targetProperty,Double widthPercentage){
         this(text,targetProperty);
         this.setWidthPercentage(widthPercentage);
+        
     }
 }

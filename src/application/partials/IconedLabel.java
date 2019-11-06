@@ -62,7 +62,7 @@ public class IconedLabel {
         lb.getStyleClass().add("defaultLabel");
         String width=String.valueOf(this.textLabel.length()*15);
         lb.setStyle("-fx-min-width :"+width);
-        System.out.println("URL : "+getImagePath(this.iconURL));
+        //System.out.println("URL : "+getImagePath(this.iconURL));
         ImageView img;
  try{
       img=new ImageView(getImagePath(this.iconURL));

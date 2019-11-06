@@ -15,7 +15,7 @@
          <children>
             <AnchorPane fx:id="addingAnchor" prefHeight="83.0" prefWidth="600.0">
                <children>
-                  <HBox fx:id="productAddBOx" layoutX="22.0" layoutY="-8.0" prefHeight="91.0" prefWidth="600.0" styleClass="topHBox" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                  <HBox fx:id="productAddBox" layoutX="22.0" layoutY="-8.0" prefHeight="91.0" prefWidth="600.0" styleClass="topHBox" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                </children></AnchorPane>
             <AnchorPane fx:id="previewAnchor" prefHeight="257.0" prefWidth="600.0" />
             <AnchorPane fx:id="validationAnchor" prefHeight="67.0" prefWidth="600.0" />

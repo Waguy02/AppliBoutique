@@ -12,6 +12,7 @@ import static application.utilities.ViewLoaders.getLoader;
 import static application.utilities.ViewLoaders.getView;
 import com.jfoenix.controls.JFXTabPane;
 import java.net.URL;
+import java.util.HashMap;
 import java.util.ResourceBundle;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -40,6 +41,8 @@ public class MainTabPaneController implements Initializable {
 
    
     ObservableList<Produit> listeProduit;
+    ObservableList<Produit> listeAvailabeProduit=FXCollections.observableArrayList();
+    
     private ObservableList<SalePaneController> currentSales = FXCollections.observableArrayList();
     public ObservableList<SalePaneController> getCurrentSales() {
         return currentSales;
@@ -59,6 +62,18 @@ public class MainTabPaneController implements Initializable {
         this.currentSales = currentSales;
     }
 
+    public ObservableList<Produit> getListeAvailabeProduit() {
+        return listeAvailabeProduit;
+    }
+
+    public void setListeAvailabeProduit(ObservableList<Produit> listeAvailabeProduit) {
+        this.listeAvailabeProduit = listeAvailabeProduit;
+    }
+
+   
+
+   
+ 
     private ProductTableController productTableController;
     @FXML
     private AnchorPane rootAnchor;
@@ -131,8 +146,6 @@ public class MainTabPaneController implements Initializable {
     
     
     public void initProductTab() {
-        //FXMLLoader loader=getLoader("layouts/caissiere/productTable/productTable");
-
         FXMLLoader loader = getLoader("layouts/caissiere/productTable/productTable");
         AnchorPane root = (AnchorPane) getView(loader);
         this.productTableTab.setContent(root);
@@ -172,6 +185,8 @@ public class MainTabPaneController implements Initializable {
 
         } catch (Exception e) {
             quickAlert(AlertType.ERROR, "Echec de l'initialisation de la vente \n "+e.getStackTrace());
+            System.out.println(e.getMessage());
+            e.printStackTrace();
             return;
         }
         
@@ -181,7 +196,14 @@ public class MainTabPaneController implements Initializable {
 
     public void loadData() {
         this.listeProduit = FXCollections.observableArrayList(this.getEmp().getMapProduits().values());
-
+        for(Produit p :this.listeProduit){
+            this.listeAvailabeProduit.add(p.clone());
+        }
+            
+        
+        
+        
+        
     }
      
 

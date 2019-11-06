@@ -9,6 +9,7 @@ import com.jfoenix.controls.JFXComboBox;
 import java.lang.reflect.Method;
 import javafx.collections.ObservableList;
 import javafx.util.StringConverter;
+import model.Produit;
 import org.controlsfx.control.textfield.TextFields;
 
 /**
@@ -39,23 +40,24 @@ public class AutoCompleteCombo<T> extends JFXComboBox {
 
     
     public void configure() {
-
+        this.setItems(this.data);
         targetProperty = targetProperty.substring(0, 1).toUpperCase().concat(targetProperty.substring(1, targetProperty.length() ));
         String getter = "get" + targetProperty;
         String setter = "set" + targetProperty;
-
+   this.setEditable(true);
         
+            
+   
         System.out.println("Getter : "+getter +" - ----  -"+"Setter : "+setter);
-        this.setEditable(true);
+     
 
-        this.setConverter(new StringConverter<T>() {
+     /*   this.setConverter(new StringConverter<T>() {
             Method getterMethod, setterMethod;
 
             @Override
             public String toString(T object) {
                 
                 if (object == null) {
-                    System.out.println("Null Object");
                     return null;
                 }
                 try {
@@ -65,7 +67,7 @@ public class AutoCompleteCombo<T> extends JFXComboBox {
                 if (getterMethod.invoke(object,null) == null) {
                     return "NO VALUE";
                 } else {
-                    System.out.println(getterMethod.invoke(object,null));
+                    
                    return getterMethod.invoke(object,null).toString();
                 }
                 
@@ -83,11 +85,11 @@ public class AutoCompleteCombo<T> extends JFXComboBox {
 
             @Override
             public T fromString(String string) {
-                return null;
+                return (T)new Object();
             }
 
         });
-        
+        */
         
         
         TextFields.bindAutoCompletion(this.getEditor(), data);
