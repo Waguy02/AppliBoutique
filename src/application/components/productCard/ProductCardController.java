@@ -111,7 +111,7 @@ public class ProductCardController implements Initializable,CustomController {
     public void initTop(){
             produitCombo.setItems(productList);
             LabelledAutoCombo combo=new LabelledAutoCombo("Produit", produitCombo);
-            this.topAnchor.getChildren().add(produitCombo);    
+            this.topAnchor.getChildren().add(combo);    
                System.out.println("Header initialisé");
     
     }

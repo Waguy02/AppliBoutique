@@ -125,7 +125,7 @@ public void makeTableClickable(){
  
     this.previewTable.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
 @Override
-    public void handle(MouseEvent t) {
+       public void handle(MouseEvent t) {
         cm.hide();
        
        selectedProduct=previewTable.getSelectionModel().getSelectedItem();

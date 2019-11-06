@@ -71,14 +71,15 @@ public static Node getView(String path){
             Parent root=(AnchorPane)getView(loader);
             Stage stage = new Stage();
             stage.setTitle("Informations sur le produit");
-            stage.setScene(new Scene(root,1000 ,600));
-            stage.showAndWait();
+            stage.setScene(new Scene(root,800 ,600));
+            
             controller=loader.getController();
             
             controller.setProductList(productList);
             
             // Hide this current window (if this is what you want)
             controller.customInit();
+            stage.showAndWait();
         }
         catch ( Exception e) {
             e.printStackTrace();

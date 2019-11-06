@@ -18,6 +18,7 @@ import static application.utilities.ViewLoaders.getLoader;
 import static application.utilities.ViewLoaders.getView;
 import application.utilities.interfaces.CustomController;
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -175,7 +176,8 @@ public class SalePaneController implements Initializable,CustomController {
         this.initPreviewTable();
     }
     
-    ComboBox<Produit> prodCombo;
+    JFXComboBox<Produit> prodCombo;
+    JFXComboBox<Client> clientCombo;
     JFXButton addItemButton;
     JFXTextField qteField ;
     
@@ -327,6 +329,10 @@ public class SalePaneController implements Initializable,CustomController {
 
 
 
+        public void initValidationAnchor(){
+            
+            
+        }
 
 
 
