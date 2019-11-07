@@ -5,7 +5,8 @@
  */
 package application.utilities;
 
-import application.partials.CustomTableColumn;
+import application.partials.table.CustomColumn;
+import application.partials.table.CustomSimpleColumn;
 import java.util.function.Predicate;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
@@ -24,8 +25,8 @@ public class TableViewManager {
     
     
     
-    public static void addTableColumns(TableView table,CustomTableColumn ...columns){
-         for(CustomTableColumn column:columns){
+    public static void addTableColumns(TableView table,CustomColumn ...columns){
+         for(CustomColumn column:columns){
             column.setResizable(false);
             table.getColumns().add(column);
           if(column.getWidthPercentage()!=null) 
@@ -50,8 +51,8 @@ public class TableViewManager {
         boolean invalidOperation=index1>=table.getColumns().size()||index2>=table.getColumns().size()||index1<0||index2<0 ||index1==index2;
         if(invalidOperation)return;
         
-        CustomTableColumn col1=(CustomTableColumn)table.getColumns().get(index1);
-        CustomTableColumn col2=(CustomTableColumn)table.getColumns().get(index2);
+        CustomSimpleColumn col1=(CustomSimpleColumn)table.getColumns().get(index1);
+        CustomSimpleColumn col2=(CustomSimpleColumn)table.getColumns().get(index2);
         
         
         table.getColumns().set(index1,col2);
@@ -69,7 +70,7 @@ public class TableViewManager {
   
     }
     
-    public static void permuteColumn(TableView table,CustomTableColumn col1, CustomTableColumn col2){
+    public static void permuteColumn(TableView table,CustomSimpleColumn col1, CustomSimpleColumn col2){
         int index1,index2;
         index1=table.getColumns().indexOf(col1);
         index2=table.getColumns().indexOf(col2);

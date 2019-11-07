@@ -6,9 +6,16 @@
 package application.utilities;
 
 import Init.Init;
+import application.components.productCard.ProductCardController;
+import java.io.IOException;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
+import javafx.stage.Stage;
+import model.Produit;
 
 /**
  *
@@ -57,9 +64,29 @@ public static Node getView(String path){
 }
 
 
+      public static void openProductCard(Produit product, ObservableList<Produit> productList){
+        ProductCardController controller=null;
+          try {
+            FXMLLoader loader=getLoader("components/productCard/productCard");
+            Parent root=(AnchorPane)getView(loader);
+            Stage stage = new Stage();
+            stage.setTitle("Informations sur le produit");
+            stage.setScene(new Scene(root,800 ,600));
+            
+            controller=loader.getController();
+            
+            controller.setProductList(productList);
+            
+            // Hide this current window (if this is what you want)
+            controller.customInit();
+            stage.showAndWait();
+        }
+        catch ( Exception e) {
+            e.printStackTrace();
+        }
+
     
-    
-    
+      }
     
     
     

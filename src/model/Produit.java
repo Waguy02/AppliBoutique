@@ -1,7 +1,6 @@
 package model;
 
 import dbManager.Manager;
-import erreurs.QuantiteInvalideException;
 import interfaces.HashCode;
 import java.io.Serializable;
 import javax.persistence.*;
@@ -25,7 +24,7 @@ import outils.Outils;
 @Entity
 @Table(name = "produit")
 @NamedQuery(name = "Produit.findAll", query = "SELECT p FROM Produit p")
-public class Produit implements Serializable, HashCode {
+public class Produit implements Serializable, HashCode, Cloneable{
 
     private final ObjectProperty<Date> datePeremption = new SimpleObjectProperty<>();
     
@@ -64,6 +63,38 @@ public class Produit implements Serializable, HashCode {
     public Produit() {
 
     }
+    
+    
+    
+    
+    
+    
+   public Produit clone(){
+      Produit clone=new Produit();
+      
+      clone.setCategorie(categorie);
+clone.setDatePeremption(datePeremption.get());
+clone.setDescription(description.get());
+clone.setId(id.get());
+clone.setNom(nom.get());
+clone.setPrixUnitaire(this.prixUnitaire.get());
+clone.setQuantite(this.quantite.get());
+      
+      
+      
+      
+      
+      
+      
+      
+     return clone;
+   }
+    
+    
+    
+    
+    
+    
 
     @Temporal(TemporalType.DATE)
     @Column(name = "datePeremption")
@@ -175,5 +206,7 @@ public class Produit implements Serializable, HashCode {
     	}	
         return list;
     }
+    
+    
     
 }
