@@ -6,19 +6,40 @@
 package application.layouts.caissiere.salePane;
 
 import application.layouts.caissiere.mainTabPane.MainTabPaneController;
+import application.layouts.caissiere.salePane.preview.SalePreviewTableController;
 import application.partials.AutoCompleteCombo;
-import application.partials.LabelledAutoCombo;
-import application.partials.LabelledTextField;
+import application.partials.IconedLabel;
+import application.partials.inputs.LabelledAutoCombo;
+import application.partials.inputs.LabelledTextField;
+import application.utilities.inputs.InputBindings;
+import static application.utilities.Tools.disable;
+import static application.utilities.Tools.quickAlert;
+import static application.utilities.ViewLoaders.getLoader;
+import static application.utilities.ViewLoaders.getView;
+import application.utilities.interfaces.CustomController;
+import com.gluonhq.impl.charm.a.b.b.s;
+import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
+import static java.lang.Integer.sum;
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.SimpleDoubleProperty;
+import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.geometry.Orientation;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Separator;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+import model.Client;
 import model.Produit;
 
 /**
@@ -26,11 +47,71 @@ import model.Produit;
  *
  * @author test
  */
-public class SalePaneController implements Initializable {
+public class SalePaneController implements Initializable,CustomController {
 
     
     private MainTabPaneController mainController;
+    private SalePreviewTableController salePreviewController;
+    
+    @FXML
+    private VBox rootVBox;
+    @FXML
+    private HBox validationBox;
+    
+    
+    
 
+    public SalePreviewTableController getSalePreviewController() {
+        return salePreviewController;
+    }
+
+    public void setSalePreviewController(SalePreviewTableController salePreviewController) {
+        this.salePreviewController = salePreviewController;
+    }
+
+    public ObservableList<Produit> getPreviewItems() {
+        return previewItems;
+    }
+
+    public void setPreviewItems(ObservableList<Produit> previewItems) {
+        this.previewItems = previewItems;
+    }
+
+    public ComboBox<Produit> getProdCombo() {
+        return prodCombo;
+    }
+
+    public void setProdCombo(JFXComboBox<Produit> prodCombo) {
+        this.prodCombo = prodCombo;
+    }
+
+    public JFXButton getAddItemButton() {
+        return addItemButton;
+    }
+
+    public void setAddItemButton(JFXButton addItemButton) {
+        this.addItemButton = addItemButton;
+    }
+
+    public JFXTextField getQteField() {
+        return qteField;
+    }
+
+    public void setQteField(JFXTextField qteField) {
+        this.qteField = qteField;
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    private ObservableList<Produit> previewItems=FXCollections.observableArrayList();
     public MainTabPaneController getMainController() {
         return mainController;
     }
@@ -47,12 +128,12 @@ public class SalePaneController implements Initializable {
         this.addingAnchor = addingAnchor;
     }
 
-    public HBox getProductAddBOx() {
-        return productAddBOx;
+    public HBox getProductAddBox() {
+        return productAddBox;
     }
 
-    public void setProductAddBOx(HBox productAddBOx) {
-        this.productAddBOx = productAddBOx;
+    public void setProductAddBox(HBox productAddBox) {
+        this.productAddBox = productAddBox;
     }
 
     public HBox getProductNameSearcBox() {
@@ -78,95 +159,250 @@ public class SalePaneController implements Initializable {
     public void setValidationAnchor(AnchorPane validationAnchor) {
         this.validationAnchor = validationAnchor;
     }
+
+    public JFXComboBox<Client> getClientCombo() {
+        return clientCombo;
+    }
+
+    public void setClientCombo(JFXComboBox<Client> clientCombo) {
+        this.clientCombo = clientCombo;
+    }
+    
+    
+    
     @FXML
     private AnchorPane addingAnchor;
+    
     @FXML
-    private HBox productAddBOx;
+    private HBox productAddBox;
+    
     private HBox productNameSearcBox;
     @FXML
     private AnchorPane previewAnchor;
     @FXML
     private AnchorPane validationAnchor;
 
+    
+    private JFXButton validationButton;
+    
     /**
      * Initializes the controller class.
      */
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+    
     }    
     
     
     public void customInit(){
+        
+        
+        
+        
+        
+        this.previewAnchor.minHeightProperty().bind(rootVBox.heightProperty().multiply(0.5));
+        this.validationAnchor.maxHeightProperty().bind(rootVBox.heightProperty().multiply(0.1));
         this.initAddProductBar();
+        this.initPreviewTable();
+        this.initValidationAnchor();
     }
     
+    JFXComboBox<Produit> prodCombo;
     
+    
+    JFXComboBox<Client> clientCombo;
+    JFXButton addItemButton;
+    JFXTextField qteField ;
     
     public void initAddProductBar(){
     
-        ComboBox<Produit> prodCombo= new AutoCompleteCombo("nom",this.mainController.getListeProduit());
-   
-    
-    JFXTextField qteField=new JFXTextField();
-    //qteField.getStyleClass().add("defaultTextField");
-    
-    qteField.textProperty().addListener(new ChangeListener<String>(){
-        @Override
-        public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-            if(newValue.isEmpty()||newValue==null) qteField.setText("0");
-            
-            else{
-                
-                try{
-                    Integer val=Integer.valueOf(qteField.getText());
-                    if(val<=0){qteField.setText("0");return;}
-                    
-                    Integer max=prodCombo.getValue().getQuantite();
-                    if(val>=max){qteField.setText(String.valueOf(max));
-                    return;
-                    }
-                
-                }
-             catch(Exception e){
-                 qteField.setText("0");
-             
-             }
-             
-            }
-                
-                
-                
-            }
-        
-        
-    });
-    
-    prodCombo.valueProperty().addListener(new ChangeListener<Produit>(){
+        prodCombo= new AutoCompleteCombo("nom",this.mainController.getListeAvailabeProduit());
+            this.productAddBox.getChildren().add(new LabelledAutoCombo("Produit ",prodCombo));
+         this.mainController.getListeAvailabeProduit().addListener(new ListChangeListener<Produit>(){
             @Override
-            public void changed(ObservableValue<? extends Produit> observable, Produit oldValue, Produit newValue) {
-              qteField.setText("0");
+            public void onChanged(ListChangeListener.Change<? extends Produit> c) {
+            clearProductBar();
             }
-    
-    
-    });
-        
-        
-        
-         this.productAddBOx.getChildren().add(new LabelledAutoCombo("Produit ",prodCombo));
+
+
+        });
+        qteField =new JFXTextField();
+         this.productAddBox.getChildren().add(new LabelledTextField("Quantité",qteField));
          
-         this.productAddBOx.getChildren().add(new LabelledTextField("Quantité",qteField));
+         
+        
+         InputBindings.bindQteInput(qteField, prodCombo, "quantite", Produit.class);
         
         
+        addItemButton=new JFXButton("",IconedLabel.plot("Ajouter","add_64px.png",true));
+        this.productAddBox.getChildren().add(addItemButton);
         
-        
+        this.initAddButton();
+    }
+    
+    public void clearProductBar()
+    {
+     this.prodCombo.getSelectionModel().clearSelection();
+     disable(this.qteField);
         
         
     }
     
-    
-    
+    public void initAddButton(){
+        this.addItemButton.setOnAction(event->{
+            Produit newP=this.prodCombo.getValue().clone();
+                        
+            Integer qte=Integer.valueOf(this.qteField.getText());
+            
+            if(qte==0){
+                
+                quickAlert(Alert.AlertType.ERROR,"Veuillez préciser la quantité"); return ;}
+            
+            
+            
+            
+            
+            
+            
+            
+            newP.setQuantite(qte);
+            
+            boolean contains=false;
+            
+            for(Produit p:this.previewItems){
+             if(p.getId().equals(newP.getId())){
+              contains=true;
+              p.setQuantite(p.getQuantite()+newP.getQuantite());
+             
+              }
+            }
+            
+            if(!contains){
+                
+             this.previewItems.add(newP);   
+            }
+           //Mise à jour des produits disponibles :
+         
+           Produit p0=null;
+           for(Produit availableP:this.mainController.getListeAvailabeProduit()){
+             
+                if(availableP.getId().equals(newP.getId())){
+                    p0=availableP;break;
+                                }   
+            }
+           
+            p0.setQuantite(p0.getQuantite()-newP.getQuantite());
+            this.mainController.getListeAvailabeProduit().remove(p0);
+            this.mainController.getListeAvailabeProduit().add(p0);
+        
+            
+    }
+            );
+        
+        }
+       
         
     
-}
+    
+    
+    
+    public void initPreviewTable(){
+        
+        FXMLLoader loader = getLoader("layouts/caissiere/salePane/preview/salePreviewTable");
+        AnchorPane root = (AnchorPane) getView(loader);
+        this.setSalePreviewController(loader.getController());
+        
+        this.getSalePreviewController().setBaseController(this);
+        root.minWidthProperty().bind(this.previewAnchor.widthProperty());
+        root.maxWidthProperty().bind(this.previewAnchor.widthProperty());
+        root.minHeightProperty().bind(this.previewAnchor.heightProperty());
+        root.maxHeightProperty().bind(this.previewAnchor.heightProperty());
+        
+        this.previewAnchor.getChildren().add(root);
+        
+        this.salePreviewController.setPreviewList(previewItems);
+        this.salePreviewController.customInit();
+        
+        //Détection des retraits dans la previewTable
+        
+        this.salePreviewController.getPreviewList().addListener(new ListChangeListener<Produit>() {
 
+            @Override
+            public void onChanged(ListChangeListener.Change<? extends Produit> c) {
+               
+               while (c.next()) {
+                   
+                   for (Produit remitem : c.getRemoved()) {
+                       sum.set(sum.get()-remitem.getPrixTotal());
+                       System.out.println("ELEMNT REMOVED : "+remitem.getId());
+                        for(Produit p :prodCombo.getItems()){
+                            
+                               if(p.getId().equals(remitem.getId())){
+                       
+                                  p.setQuantite(p.getQuantite()+remitem.getQuantite());
+                               }
+                     }
+                     }
+                   
+                   for(Produit addItem : c.getAddedSubList()){
+                       sum.set(sum.get()+addItem.getPrixTotal());
+                       
+                   }
+                 }
+                            }
+         
+     
+            }
+     
+);
+        
+        
+        
+        
+        
+        
+      
+    }
+    
+
+        DoubleProperty sum=new SimpleDoubleProperty();
+    
+
+        public void initValidationAnchor(){
+            
+        
+         LabelledTextField total=new LabelledTextField("Total");
+         total.getTextfield().textProperty().bind(sum.asString());
+         this.validationBox.getChildren().add(total);
+       
+         
+         Separator sep=new Separator(Orientation.VERTICAL);
+        sep.minWidthProperty().bind(this.validationBox.widthProperty().multiply(0.2));
+        
+         this.validationBox.getChildren().add(sep);
+         
+         this.clientCombo=new AutoCompleteCombo("nom",this.mainController.getEmp().getClientList());
+        this.validationBox.getChildren().add(new LabelledAutoCombo("Client",this.clientCombo));
+        
+        Separator sep1=new Separator(Orientation.VERTICAL);
+        sep1.minWidthProperty().bind(this.validationBox.widthProperty().multiply(0.1));
+        
+        this.validationBox.getChildren().add(sep1);
+        
+        
+        this.validationButton=new JFXButton("");
+       this.validationButton.setGraphic(IconedLabel.plot("Suivant","forward.png",false));
+       this.validationBox.getChildren().add(validationButton);
+        
+        
+}
+        
+
+        public void initValidationButton(){
+            
+            
+          //  this.validationButton.setOnMouseClicked(new EventHanagler<MouseEvent e>);
+        }
+
+                    }

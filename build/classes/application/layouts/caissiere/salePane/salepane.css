@@ -3,10 +3,16 @@
  */
 
 .mainFxmlClass {
+   -fx-background-color:red;
 
 }
 
-.topHBox {
+.root{
+       -fx-background-color:yellow;
+    
+/*}*/
+}
+.buttonBox {
     
     -fx-border-style:solid inside;
     -fx-padding: 30 10 10 10;

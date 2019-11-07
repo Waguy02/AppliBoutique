@@ -26,6 +26,14 @@ public class IconedLabel {
                 }
     
     
+    public static HBox plot(String textLabel,String urlImage,boolean ImageBefore,String styleClass){
+        
+            
+        return new IconedLabel(textLabel,urlImage){}.plot(ImageBefore);
+    
+    
+                }
+    
     
     private String textLabel, iconURL;
     
@@ -38,6 +46,7 @@ public class IconedLabel {
     public IconedLabel(String textLabel, String iconURL) {
         this.textLabel = textLabel;
         this.iconURL = iconURL;
+        
     }
     
 
@@ -58,14 +67,18 @@ public class IconedLabel {
     public HBox plot(boolean imageBefore){
         HBox result=new HBox();
         result.getStylesheets().add(GLOBAL_CSS_SHEET);
+        result.getStyleClass().add("defaultIconed");
                 Label lb=new Label(this.textLabel);
         lb.getStyleClass().add("defaultLabel");
         String width=String.valueOf(this.textLabel.length()*15);
         lb.setStyle("-fx-min-width :"+width);
-        System.out.println("URL : "+getImagePath(this.iconURL));
+        //System.out.println("URL : "+getImagePath(this.iconURL));
         ImageView img;
  try{
       img=new ImageView(getImagePath(this.iconURL));
+      img.setFitWidth(60);
+      img.setFitHeight(60);
+      
        img.getStyleClass().add("image");
  }
  catch(Exception e){

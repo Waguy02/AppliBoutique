@@ -47,10 +47,16 @@
              -fx-border-style:segments;
     -fx-border-width:0.3;
     -fx-margin-top:30%;
-    -fx-font-size:24;
-    -fx-min-width:30px;
+    -fx-font-size:20;
+    -fx-min-width:40px;
     -fx-font-weight:bold;
-    -fx-margin-left:10px;
-    -fx-margin-right:10px;
+    
+    -fx-padding:10 0 10 0;
 
+        }
+        
+        
+        .defautIconed Label {
+           
+            -fx-margin-top:50%;
         }

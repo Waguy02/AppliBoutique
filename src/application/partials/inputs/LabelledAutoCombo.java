@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package application.partials;
+package application.partials.inputs;
 
 import javafx.geometry.Orientation;
 import javafx.scene.control.ComboBox;
@@ -41,7 +41,7 @@ public class LabelledAutoCombo extends HBox {
       
       
       
-      this.getChildren().add(combo);
+          this.getChildren().add(combo);
       
         this.getStyleClass().add("defaultLabelled");
       

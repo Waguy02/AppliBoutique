@@ -89,7 +89,7 @@ public class Client implements Serializable, HashCode {
 
     @Override
     public String toString() {
-        return "Client [adresse=" + adresse.get() + ", id=" + id.get() + ", nom=" + nom.get() + ", telephone=" + telephone.get()
+        return "Client [ , telephone=" + telephone.get()
                 + "]";
     }
 

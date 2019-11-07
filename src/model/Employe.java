@@ -168,7 +168,9 @@ public class Employe implements Serializable, HashCode {
         TypedQuery<Commande> query = em.createQuery("SELECT c FROM Commande c WHERE c.employeId = ?1", Commande.class);
         return query.setParameter(1, this.id).getResultList();
     }
-
+     
+    
+    
     @Override
     public void genererCode() {
         if (this.id.get() == null) {
