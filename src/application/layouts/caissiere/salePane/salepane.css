@@ -1,4 +1,4 @@
-/*
+liught/*
  * Empty Stylesheet file.
  */
 
@@ -8,7 +8,7 @@
 }
 
 .root{
-       -fx-background-color:yellow;
+       -fx-background-color:lightgray;
     
 /*}*/
 }

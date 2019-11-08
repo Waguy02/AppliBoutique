@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package application.layouts.caissiere.mainTabPane;
+package application.layouts.caissiere.mainCaissierPane;
 
 import application.layouts.caissiere.productTable.ProductTableController;
 import application.layouts.caissiere.salePane.SalePaneController;
@@ -31,7 +31,7 @@ import model.Produit;
  *
  * @author test
  */
-public class MainTabPaneController implements Initializable {
+public class MainCaissierPaneController implements Initializable {
 
     @FXML
     private JFXTabPane mainTabPane;
@@ -47,15 +47,31 @@ public class MainTabPaneController implements Initializable {
     public ObservableList<SalePaneController> getCurrentSales() {
         return currentSales;
     }
-
-    private Caissier emp = new Caissier();
-
-    public Caissier getEmp() {
-        return emp;
+    
+    
+    /**
+     * 
+     *Valeurs Caissier Expérimental
+     */
+    private Caissier caissier = new Caissier();
+    public void loadData() {
+        this.listeProduit = FXCollections.observableArrayList(this.getCaissier().getMapProduits().values());
+        for(Produit p :this.listeProduit){
+            this.listeAvailabeProduit.add(p.clone());
+        }
+            
+        
+        
+        
+        
     }
 
-    public void setEmp(Caissier emp) {
-        this.emp = emp;
+    public Caissier getCaissier() {
+        return caissier;
+    }
+
+    public void setCaissier(Caissier emp) {
+        this.caissier = emp;
     }
 
     public void setCurrentSales(ObservableList<SalePaneController> currentSales) {
@@ -152,6 +168,7 @@ public class MainTabPaneController implements Initializable {
         this.setProductTableController(loader.getController());
         
         this.productTableController.setMainController(this);
+        this.productTableController.setListeProduit(this.getListeProduit());
       this.productTableController.customInit();
 
     }
@@ -194,17 +211,7 @@ public class MainTabPaneController implements Initializable {
 
     }
 
-    public void loadData() {
-        this.listeProduit = FXCollections.observableArrayList(this.getEmp().getMapProduits().values());
-        for(Produit p :this.listeProduit){
-            this.listeAvailabeProduit.add(p.clone());
-        }
-            
-        
-        
-        
-        
-    }
+    
      
 
  @Override

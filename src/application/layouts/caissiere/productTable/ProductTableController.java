@@ -5,26 +5,25 @@
  */
 package application.layouts.caissiere.productTable;
 
-import application.layouts.caissiere.mainTabPane.MainTabPaneController;
+import application.layouts.admin.mainAdminPane.MainAdminPaneController;
+import application.layouts.caissiere.mainCaissierPane.MainCaissierPaneController;
 import application.partials.table.CustomSimpleColumn;
 import application.partials.IconedLabel;
 import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
 import java.util.ResourceBundle;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
-import model.Caissier;
 import model.Produit;
 import static application.utilities.TableViewManager.addTableColumns;
 import static application.utilities.TableViewManager.enableProductSimpleFiltering;
 import com.jfoenix.controls.JFXButton;
 import java.util.function.Predicate;
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 
 /**
@@ -47,7 +46,34 @@ public class ProductTableController implements Initializable {
 
     
     
-    private MainTabPaneController mainController;
+    private MainCaissierPaneController mainController;
+    private MainAdminPaneController mainAdminPaneController;
+    
+    
+    
+    
+    
+    
+    private ObservableList<Produit> listeProduit;
+
+    public MainAdminPaneController getMainAdminPaneController() {
+        return mainAdminPaneController;
+    }
+
+    public void setMainAdminPaneController(MainAdminPaneController mainAdminPaneController) {
+        this.mainAdminPaneController = mainAdminPaneController;
+    }
+
+    public ObservableList<Produit> getListeProduit() {
+        return listeProduit;
+    }
+
+    public void setListeProduit(ObservableList<Produit> listeProduit) {
+        this.listeProduit = listeProduit;
+    }
+    
+    
+    
 
     public HBox getSearchBarHbox() {
         return searchBarHbox;
@@ -89,11 +115,11 @@ public class ProductTableController implements Initializable {
         this.rootVBox = rootVBox;
     }
 
-    public MainTabPaneController getMainController() {
+    public MainCaissierPaneController getMainController() {
         return mainController;
     }
 
-    public void setMainController(MainTabPaneController mainController) {
+    public void setMainController(MainCaissierPaneController mainController) {
         this.mainController = mainController;
     }
 
@@ -156,7 +182,7 @@ public class ProductTableController implements Initializable {
         System.out.println(this.searchBarTextField);        
 
         
-        enableProductSimpleFiltering(productTable,this.mainController.getListeProduit(),this.searchBarTextField);
+        enableProductSimpleFiltering(productTable,getListeProduit(),this.searchBarTextField);
 
     }
 

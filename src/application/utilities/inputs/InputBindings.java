@@ -110,5 +110,71 @@ public static void bindQteInput(TextField qteField, ComboBox combo, String targe
          System.out.println("Association effectuée avec suscès");
 }    
 
+    
 
-}
+  /* Cette méthode lie un textfield qte à un Object présenter un champ Qte à ne pas exécuter **/
+public static void bindQteInput(TextField qteField, Object object,String targetProperty){
+    Class dataClass=object.getClass();
+    
+    
+     targetProperty = targetProperty.substring(0, 1).toUpperCase().concat(targetProperty.substring(1, targetProperty.length() ));
+    String getter = "get" + targetProperty;
+    
+      Method getterMethod;
+                   try {
+                        
+                    getterMethod =dataClass.getMethod(getter, null);        
+                }
+                catch (Exception e) {
+                    
+                    System.out.println(e.getMessage()+" : METHODE NON RETROUVEE PAR REFLEXION");
+                    e.printStackTrace();
+                    return;
+                    }
+
+    
+      qteField.focusedProperty().addListener(new ChangeListener<Boolean>(){
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+               
+                if(newValue)return; // On sort en cas d'édition
+                if(qteField.getText().isEmpty()||qteField.getText()==null) qteField.setText("0");
+                else{
+                
+                try{
+                    Double val=Double.valueOf(qteField.getText());
+                    if(val<=0){qteField.setText("0");return;}
+                    Double max=(Double)getterMethod.invoke(object,null);
+                    
+                    
+                    if(val>=max){qteField.setText(String.valueOf(max));
+                    
+                    
+                    
+                    
+                    return;
+                    }
+                
+                }
+             catch(Exception e){
+                 
+                 qteField.setText("0");
+             
+             }
+               
+      
+      
+        
+                
+    
+    
+    
+    
+    
+
+} 
+
+}}
+            );
+              
+              }}

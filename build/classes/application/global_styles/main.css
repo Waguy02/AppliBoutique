@@ -33,7 +33,7 @@
 
 .defaultLabelled {
     -fx-border-style:solid inside;
-    -fx-background-color:lightgoldenrodyellow;
+    -fx-background-color:lightyellow;
     
         }
         
@@ -44,7 +44,7 @@
         
  .defaultInput{
             
-             -fx-border-style:segments;
+             -fx-border-style:solid inside;
     -fx-border-width:0.3;
     -fx-margin-top:30%;
     -fx-font-size:20;
@@ -60,3 +60,48 @@
            
             -fx-margin-top:50%;
         }
+        
+
+
+.baseTabPane .tab-header-area .tab-header-area{
+ -fx-alignment: top-center;
+}
+       
+.baseTabPane .tab-header-area .tab-header-background {
+    -fx-opacity: 0;-fx-tab-min-height:100px;
+}
+
+.baseTabPane
+{
+    -fx-pref-height:200px;
+    -fx-background-color: #e6e6e6;
+    
+    
+    -fx-margin-top:0;
+}
+
+.baseTabPane .tab{
+    -fx-background-insets: 0 1 0 1,0,0;
+    -fx-background-color: #e6e6e6;
+    
+}
+
+.baseTabPane .tab:selected
+{
+    -fx-background-color: #3c3c3c;
+}
+
+.baseTabPane .tab .tab-label { 
+    -fx-alignment: TOP_RIGHT;
+    
+    -fx-text-fill: #828282;
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+}
+
+
+.baseTabPane .tab:selected .tab-label { 
+    -fx-alignment: CENTER;
+    -fx-text-fill: #96b946;
+}        
+  
