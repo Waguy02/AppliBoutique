@@ -9,7 +9,9 @@ import application.partials.IconedLabel;
 import application.partials.Separators;
 import application.partials.inputs.LabelledAutoCombo;
 import application.partials.inputs.LabelledCheckBox;
+import application.partials.inputs.LabelledTextArea;
 import application.partials.inputs.LabelledTextField;
+import static application.utilities.Tools.disable;
 import application.utilities.interfaces.CustomController;
 import application.utilities.interfaces.ViewDimensionner;
 import static application.utilities.interfaces.ViewDimensionner.bindSizes;
@@ -46,14 +48,17 @@ public class CommandBoxController implements Initializable,CustomController {
     private VBox newProductBox;
         private LabelledTextField newProductNameBox;
         private LabelledAutoCombo newProductCategorie;
-        private LabelledTextField newProduitDescription;
+        private LabelledTextArea newProductDescription;
     private HBox productPricesBox;
-        private HBox productSalePrice;
-        private HBox prodcutBuyPrice;
+        private LabelledTextField productSalePrice;
+        private LabelledTextField productBuyPrice;
    
-   
+        private HBox productAmountsBox;
+   private LabelledTextField productQuantityBox;
+private LabelledTextField productTotalPriceBox;        
+        
      
-   private HBox productQuantityBox;
+   private HBox LabelledTextField;
    
    private HBox addingToPreviewBox;
         private JFXButton addingToPreviewButton;
@@ -151,25 +156,7 @@ public class CommandBoxController implements Initializable,CustomController {
         return productSalePrice;
     }
 
-    public void setProductSalePrice(HBox productSalePrice) {
-        this.productSalePrice = productSalePrice;
-    }
-
-    public HBox getProdcutBuyPrice() {
-        return prodcutBuyPrice;
-    }
-
-    public void setProdcutBuyPrice(HBox prodcutBuyPrice) {
-        this.prodcutBuyPrice = prodcutBuyPrice;
-    }
-
-    public HBox getProductQuantityBox() {
-        return productQuantityBox;
-    }
-
-    public void setProductQuantityBox(HBox productQuantityBox) {
-        this.productQuantityBox = productQuantityBox;
-    }
+   
 
     public HBox getAddingToPreviewBox() {
         return addingToPreviewBox;
@@ -290,6 +277,8 @@ public class CommandBoxController implements Initializable,CustomController {
     
     public void initProductBox(){
         
+           
+        
         this.productBox=new HBox();
         ViewDimensionner.bindSizes(productBox, rootVBox, 1, 0.1);
         
@@ -297,18 +286,20 @@ public class CommandBoxController implements Initializable,CustomController {
        productListBox=new LabelledAutoCombo("",productCombo);
        productListBox.getLabel().setGraphic(IconedLabel.plot("Produit", "product.png", true));
        bindSizes(productListBox,productBox,1,0.5);
-       productBox.getChildren().add(productListBox);       
+    
        
-       productBox.getChildren().add(Separators.formSeparatorH());
+       productBox.getChildren().add(Separators.formSeparatorV());
        
       checkOtherProductBox=new LabelledCheckBox("Autre");
       bindSizes(checkOtherProductBox,productBox,1,0.3);
       
-      productBox.getChildren().add(checkOtherProductBox);
+      
        
       productBox.disableProperty().bindBidirectional(checkOtherProductBox.getSelectedProperty());
       
       
+      
+      productBox.getChildren().addAll(productListBox,Separators.formSeparatorV(),checkOtherProductBox);       
       this.rootVBox.getChildren().addAll(productBox,Separators.formSeparatorH());
        
     }
@@ -325,29 +316,112 @@ public class CommandBoxController implements Initializable,CustomController {
             
              HBox nameAndCatBox=new HBox();
              newProductBox.getChildren().add(nameAndCatBox);
-             
              bindSizes(nameAndCatBox,newProductBox,1,0.3);
              
-             
-             
              newProductNameBox=new LabelledTextField("Nom du produit");
-            bindSizes(newProductNameBox,nameAndCatBox,0.4,0.1);
+             bindSizes(newProductNameBox,nameAndCatBox,0.4,0.1);
              
              newProductCategorie=new LabelledAutoCombo("Categore",new JFXComboBox(administrateur.listeCategorie()));
-            bindSizes(newProductCategorie,nameAndCatBox,0.4,0.1); 
-             
-            nameAndCatBox.getChildren().addAll(newProductNameBox,Separators.formSeparatorH(),newProductCategorie);
-             
-             
-             
+             bindSizes(newProductCategorie,nameAndCatBox,0.4,0.1); 
+             nameAndCatBox.getChildren().addAll(newProductNameBox,Separators.formSeparatorV(),newProductCategorie);
              newProductBox.getChildren().add(nameAndCatBox);
+             newProductBox.getChildren().add(Separators.formSeparatorH(Separators.TINY_HEIGHT));
+             
+             
+            this.newProductDescription=new LabelledTextArea("Description du produit");
+            bindSizes(newProductDescription,newProductBox,1,0.6);
+            this.newProductBox.getChildren().add(newProductDescription);
+           
             
-            
+          this.rootVBox.getChildren().addAll(newProductBox,Separators.formSeparatorV());
 
-            
+            newProductBox.visibleProperty().bind(checkOtherProductBox.getSelectedProperty().not());
     
     
         }
     
+    
+    
+   
+    public void initProductPricesBox(){
+        
+        this.productPricesBox=new HBox();
+        bindSizes(productPricesBox,rootVBox,1,0.1);
+        
+        productBuyPrice=new LabelledTextField("Prix d'achat");
+         productSalePrice=new LabelledTextField("Prix De vente");
+         
+         bindSizes(productBuyPrice,productPricesBox,0.4,1);
+         bindSizes(productSalePrice,productPricesBox,0.4,1);
+        
+        
+         productPricesBox.getChildren().addAll(productBuyPrice,Separators.formSeparatorH(),productSalePrice);
+        
+        
+         this.rootVBox.getChildren().addAll(productPricesBox,Separators.formSeparatorV());
+        
+        
+        
+        }
+    
+    
+    
+    public void initProductAmounts(){
+        this.productAmountsBox=new HBox();
+        bindSizes(productAmountsBox,rootVBox,1,0.08);
+        
+        this.productQuantityBox=new LabelledTextField("Quantité");
+        bindSizes(productQuantityBox,productAmountsBox,0.3,1);
+    
+        
+        
+        this.productTotalPriceBox=new LabelledTextField("total");
+        bindSizes(productTotalPriceBox,productAmountsBox,0.3,1);
+        disable(this.productTotalPriceBox);
+        
+        this.productAmountsBox.getChildren().addAll(this.productQuantityBox,
+                Separators.formSeparatorV(Separators.LONG_WIDTH),this.productTotalPriceBox);
+        
+        this.rootVBox.getChildren().addAll(this.productAmountsBox,Separators.formSeparatorH());
+    
+    
+    
+    
+    
+    }    
+    
+    
+    
+    public void initAddingToPreviewBox(){
+        this.addingToPreviewBox=new HBox();
+        bindSizes(addingToPreviewBox,rootVBox,1,0.08);
+        
+        
+        this.addingToPreviewButton=new JFXButton();
+        addingToPreviewButton.setGraphic(IconedLabel.plot("Ajouter à la commmande", "add2.png", true,20,20));
+        
+        
+        this.previewAmount=new LabelledTextField("Montant total de la commande");
+        disable(this.previewAmount);
+        bindSizes(this.previewAmount,this.addingToPreviewBox,0.4,1);
+        
+        
+        this.addingToPreviewBox.getChildren().addAll(addingToPreviewButton,Separators.formSeparatorH(Separators.LONG_WIDTH),previewAmount);        
+        
+       
+        this.rootVBox.getChildren().add(this.addingToPreviewBox);
+        
+    }
+    
+    
+    
+    
+    
+    
+    public void initPreviewTable(){
+        
+        this.previewTable=new TableView();
+        
+    }
     
 }

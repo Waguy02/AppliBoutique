@@ -14,12 +14,29 @@ import javafx.scene.control.Separator;
  */
 public class Separators {
     
+    public static final double TINY_HEIGHT=5;
+    public static final double NORMAL_HEIGHT=15;
+    public static final double LONG_HEIGHT=25;
+    
+    
+    public static final double LONG_WIDTH=120;
+    public static final double NORMAL_WIDTH=30;
+    public static final double TINY_WIDTH=15;
     
     public static Separator formSeparatorH(){
         Separator result =new Separator(Orientation.HORIZONTAL);
         result.autosize();
         
-        result.setMinHeight(15);
+        result.setMinHeight(NORMAL_HEIGHT);
+        return result;
+    }
+    
+    
+     public static Separator formSeparatorH(double height){
+        Separator result =new Separator(Orientation.HORIZONTAL);
+        result.autosize();
+        
+        result.setMinHeight(height);
         return result;
     }
     
@@ -28,10 +45,17 @@ public class Separators {
         Separator result =new Separator(Orientation.VERTICAL);
         result.autosize();
         
-        result.setMinWidth(15);
+        result.setMinWidth(TINY_WIDTH);
         return result;
     }
     
+     public static Separator formSeparatorV(double width){
+        Separator result =new Separator(Orientation.VERTICAL);
+        result.autosize();
+        
+        result.setMinWidth(width);
+        return result;
+    }
     public static Separator  labelSeparatorV(){
         Separator result =new Separator(Orientation.VERTICAL);
         result.autosize();
