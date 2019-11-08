@@ -5,22 +5,22 @@
  */
 package application.partials.inputs;
 
-import com.jfoenix.controls.JFXTextField;
+import com.jfoenix.controls.JFXTextArea;
 import javafx.beans.property.StringProperty;
 import javafx.geometry.Orientation;
 import javafx.scene.control.Label;
 import javafx.scene.control.Separator;
-import javafx.scene.control.TextField;
+import javafx.scene.control.TextArea;
 import javafx.scene.layout.HBox;
 
 /**
  *
  * @author test
  */
-public class LabelledTextField extends HBox {
+public class LabelledTextArea extends HBox {
     
        public StringProperty textProperty(){
-           return this.textfield.textProperty();
+           return this.textArea.textProperty();
        }
        
        
@@ -34,7 +34,7 @@ public class LabelledTextField extends HBox {
        
        
     private Label label;
-    private TextField textfield;
+    private TextArea textArea;
 
     public Label getLabel() {
         return label;
@@ -44,17 +44,17 @@ public class LabelledTextField extends HBox {
         this.label = label;
     }
 
-    public TextField getTextfield() {
-        return textfield;
+    public TextArea getTextArea() {
+        return textArea;
     }
 
-    public void setTextfield(TextField textfield) {
-        this.textfield = textfield;
+    public void setTextArea(TextArea TextArea) {
+        this.textArea = TextArea;
     }
     
     
-    public LabelledTextField(String label){
-        this.textfield=new JFXTextField();
+    public LabelledTextArea(String label){
+        this.textArea=new JFXTextArea();
         this.setLabel(new Label(label));
         this.init();
         
@@ -75,18 +75,18 @@ public class LabelledTextField extends HBox {
       
       
       
-      this.getChildren().add(this.textfield);
-            this.textfield.getStyleClass().add("defaultInput");
+      this.getChildren().add(this.textArea);
+            this.textArea.getStyleClass().add("defaultInput");
         this.getStyleClass().add("defaultLabelled");
       
     
         
         
     }
-    public LabelledTextField(String label,TextField tf){
+    public LabelledTextArea(String label,TextArea tf){
         
         this.setLabel(new Label(label));
-        this.setTextfield(tf);
+        this.setTextArea(tf);
         this.init();
         
     }

@@ -73,7 +73,7 @@
 
 .baseTabPane
 {
-    -fx-pref-height:200px;
+
     -fx-background-color: #e6e6e6;
     
     
@@ -88,7 +88,7 @@
 
 .baseTabPane .tab:selected
 {
-    -fx-background-color: #3c3c3c;
+    -fx-background-color: #bf9e3b;
 }
 
 .baseTabPane .tab .tab-label { 

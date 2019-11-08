@@ -52,7 +52,7 @@ public static Node getView(FXMLLoader loader){
 
 public static Node getView(String path){
     try{
-       AnchorPane root=FXMLLoader.load(Init.class.getResource("/application/"+path+".fxml"));
+      Node root=FXMLLoader.load(Init.class.getResource("/application/"+path+".fxml"));
    return root;
     }
     catch(Exception e){

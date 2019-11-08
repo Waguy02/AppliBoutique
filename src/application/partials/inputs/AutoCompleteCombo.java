@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package application.partials;
+package application.partials.inputs;
 
 import com.jfoenix.controls.JFXComboBox;
 import java.lang.reflect.Method;

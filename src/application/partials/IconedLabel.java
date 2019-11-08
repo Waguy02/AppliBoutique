@@ -121,8 +121,8 @@ public class IconedLabel {
     Label lb;
     
     
-    private Double imgX=60.0;
-    private Double imgY=60.0;
+    private Double imgX=40.0;
+    private Double imgY=40.0;
 
     public Double getImgX() {
         return imgX;

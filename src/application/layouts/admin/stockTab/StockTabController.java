@@ -9,14 +9,14 @@ import application.layouts.caissiere.productTable.ProductTableController;
 import static application.utilities.ViewLoaders.getLoader;
 import static application.utilities.ViewLoaders.getView;
 import application.utilities.interfaces.CustomController;
+import application.utilities.interfaces.ViewDimensionner;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.StackPane;
+import model.Administrateur;
 
 /**
  * FXML Controller class
@@ -25,12 +25,23 @@ import javafx.scene.layout.StackPane;
  */
 public class StockTabController implements Initializable,CustomController {
 
+
+    
+    private Administrateur admin;
     @FXML
-    private AnchorPane rootVBox;
-    @FXML
-    private StackPane rootStack;
-    @FXML
-    private BorderPane rootBorder;
+    private AnchorPane rootAnchor;
+
+    public Administrateur getAdmin() {
+        return admin;
+    }
+
+    public void setAdmin(Administrateur admin) {
+        this.admin = admin;
+    }
+    
+    
+    
+    
     
     private ProductTableController productTableController;
 
@@ -42,34 +53,6 @@ public class StockTabController implements Initializable,CustomController {
         // TODO
     }    
 
-    @Override
-    public void customInit() {
-        initTableController();
-    }
-
-    public AnchorPane getRootVBox() {
-        return rootVBox;
-    }
-
-    public void setRootVBox(AnchorPane rootVBox) {
-        this.rootVBox = rootVBox;
-    }
-
-    public StackPane getRootStack() {
-        return rootStack;
-    }
-
-    public void setRootStack(StackPane rootStack) {
-        this.rootStack = rootStack;
-    }
-
-    public BorderPane getRootBorder() {
-        return rootBorder;
-    }
-
-    public void setRootBorder(BorderPane rootBorder) {
-        this.rootBorder = rootBorder;
-    }
 
     public ProductTableController getProductTableController() {
         return productTableController;
@@ -78,31 +61,60 @@ public class StockTabController implements Initializable,CustomController {
     public void setProductTableController(ProductTableController productTableController) {
         this.productTableController = productTableController;
     }
-    
-    
-    
-    
-    
-    
-    public void initTableController(){
-        
-        
-        
+
+    public AnchorPane getRootAnchor() {
+        return rootAnchor;
     }
+
+    public void setRootAnchor(AnchorPane rootAnchor) {
+        this.rootAnchor = rootAnchor;
+    }
+    
+    
+    
+    
+    
+
+
+  @Override
+    public void customInit() {
+        this.initProductTab();
+    }
+
+
     
     
     
         public void initProductTab() {
         FXMLLoader loader = getLoader("layouts/caissiere/productTable/productTable");
         AnchorPane root = (AnchorPane) getView(loader);
-        this.rootBorder.setCenter(root);
+        this.rootAnchor.setStyle("-fx-background-color:red");
+        
+        this.rootAnchor.getChildren().add(root);
+        
+        ViewDimensionner.bindSizes(root,rootAnchor,1,1);
         this.setProductTableController(loader.getController());
-        //this.productTableController.setListeProduit(this.getListeProduit());
-     
+        this.productTableController.setListeProduit(this.admin.listeProduits());
+        this.productTableController.getManagingMode().set(true);
+        this.productTableController.getSaleMode().set(true);
         this.productTableController.customInit();
+        
 
-    }
-    
+    } 
+
+        
+        
+        
+        
+        
+        
+        
+        
+        public void onSelectionHandle(){
+            
+            this.productTableController.getListeProduit().setAll(admin.listeProduits());
+            
+        }
     
     
     

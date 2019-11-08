@@ -8,7 +8,7 @@ package application.layouts.caissiere.salePane;
 import application.layouts.caissiere.mainCaissierPane.MainCaissierPaneController;
 import application.layouts.caissiere.salePane.finalize.SaleFinalizeController;
 import application.layouts.caissiere.salePane.preview.SalePreviewTableController;
-import application.partials.AutoCompleteCombo;
+import application.partials.inputs.AutoCompleteCombo;
 import application.partials.IconedLabel;
 import application.partials.inputs.LabelledAutoCombo;
 import application.partials.inputs.LabelledTextField;

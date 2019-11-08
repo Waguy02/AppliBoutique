@@ -23,6 +23,8 @@ import static application.utilities.TableViewManager.addTableColumns;
 import static application.utilities.TableViewManager.enableProductSimpleFiltering;
 import com.jfoenix.controls.JFXButton;
 import java.util.function.Predicate;
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 
@@ -44,16 +46,9 @@ public class ProductTableController implements Initializable {
     @FXML
     private VBox rootVBox;
 
-    
-    
     private MainCaissierPaneController mainController;
     private MainAdminPaneController mainAdminPaneController;
-    
-    
-    
-    
-    
-    
+
     private ObservableList<Produit> listeProduit;
 
     public MainAdminPaneController getMainAdminPaneController() {
@@ -71,9 +66,6 @@ public class ProductTableController implements Initializable {
     public void setListeProduit(ObservableList<Produit> listeProduit) {
         this.listeProduit = listeProduit;
     }
-    
-    
-    
 
     public HBox getSearchBarHbox() {
         return searchBarHbox;
@@ -138,14 +130,15 @@ public class ProductTableController implements Initializable {
     public void setNewSaleButton(JFXButton newSaleButton) {
         this.newSaleButton = newSaleButton;
     }
-    
-    
-    
+
     @FXML
     private AnchorPane topBar;
+    
     @FXML
     private JFXButton newSaleButton;
 
+    
+    private JFXButton newCommandButton;
     /**
      * Initializes the controller class.
      */
@@ -153,36 +146,32 @@ public class ProductTableController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
 
-      
-        
-        
     }
-    
-    public void customInit(){
-          newSaleButton.setGraphic(IconedLabel.plot("Nouvelle Vente","add_64px.png",true));
+
+    public void customInit() {
+       
+        
+        initNewSaleButton();
+        initNewCommandButton();
+        initModes();
+        
         initProductTable();
         makeResponsive();
         initSearchBar();
-      
-        
-        
+
     }
 
-   
-    
     public void initProductTable() {
         rootVBox.minWidthProperty().bind(rootAnchor.widthProperty());
         CustomSimpleColumn<Produit, String> colID = new CustomSimpleColumn("ID", "id", 15.0);
-        CustomSimpleColumn<Produit, String> colCategorie = new CustomSimpleColumn("Categorie", "categorie", 30.0),colLibelle = new CustomSimpleColumn("nom", "Nom",30.0);
+        CustomSimpleColumn<Produit, String> colCategorie = new CustomSimpleColumn("Categorie", "categorie", 30.0), colLibelle = new CustomSimpleColumn("nom", "Nom", 30.0);
         CustomSimpleColumn<Produit, Integer> colQuantite = new CustomSimpleColumn("Quantite", "quantite", 20.0);
 
         addTableColumns(productTable, colID, colLibelle, colCategorie, colQuantite);
 
-     
-        System.out.println(this.searchBarTextField);        
+        System.out.println(this.searchBarTextField);
 
-        
-        enableProductSimpleFiltering(productTable,getListeProduit(),this.searchBarTextField);
+        enableProductSimpleFiltering(productTable, getListeProduit(), this.searchBarTextField);
 
     }
 
@@ -190,33 +179,70 @@ public class ProductTableController implements Initializable {
 
         productTable.minHeightProperty().bind(rootVBox.heightProperty().subtract(topBar.heightProperty()));
     }
-    
-    
-    
-    public void initSearchBar(){
-        
-        this.searchBarHbox.getChildren().add(0,(new IconedLabel("","search.png")).plot(false));
-        
-        
-        Predicate predicate=produit->produit==null;
+
+    public void initSearchBar() {
+
+        this.searchBarHbox.getChildren().add(0, (new IconedLabel("", "search.png")).plot(false));
+
+        Predicate predicate = produit -> produit == null;
     }
 
-   
-    
-   
-    
-    
-    
-    
-    
-    
-    
     @FXML
     private void startNewSale(ActionEvent event) {
-        
-        
+
         this.mainController.initiateSale();
     }
+
+    private BooleanProperty saleMode = new SimpleBooleanProperty(false), managingMode = new SimpleBooleanProperty(false);
+
+    public JFXButton getNewCommandButton() {
+        return newCommandButton;
+    }
+
+    public void setNewCommandButton(JFXButton newCommandButton) {
+        this.newCommandButton = newCommandButton;
+    }
+
+    public BooleanProperty getSaleMode() {
+        return saleMode;
+    }
+
+    public void setSaleMode(BooleanProperty saleMode) {
+        this.saleMode = saleMode;
+    }
+
+    public BooleanProperty getManagingMode() {
+        return managingMode;
+    }
+
+    public void setManagingMode(BooleanProperty managingMode) {
+        this.managingMode = managingMode;
+    }
+    
+    
+    
+    
+    
+    public void initModes(){
+        
+        // Les boutons sont associés à des modes spécifiques. Le bouton nouvel vente est associé à saleMode en l'occcurence
+        this.newCommandButton.visibleProperty().bind(managingMode);
+        this.newSaleButton.visibleProperty().bind(saleMode);
+        
+    }
+    
+    
+    public void initNewSaleButton(){
+         newSaleButton.setGraphic(IconedLabel.plot("Nouvelle Vente", "add_64px.png", true));
+    }
+    
+    public void initNewCommandButton(){
+        this.newCommandButton=new JFXButton();
+        newCommandButton.setGraphic(IconedLabel.plot("Nouvelle Commande", "download.png", true));
+        this.searchBarHbox.getChildren().add(newCommandButton);
+        
+    }
+
 
 }
 
