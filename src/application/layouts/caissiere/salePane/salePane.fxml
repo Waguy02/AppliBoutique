@@ -11,14 +11,22 @@
       <URL value="@../../../global_styles/main.css" />
     </stylesheets>
    <children>
-      <VBox layoutX="14.0" layoutY="43.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+      <VBox fx:id="rootVBox" layoutX="14.0" layoutY="43.0" prefHeight="400.0" prefWidth="600.0" styleClass="root" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <AnchorPane fx:id="addingAnchor" prefHeight="83.0" prefWidth="600.0">
                <children>
+<<<<<<< HEAD
                   <HBox fx:id="productAddBox" layoutX="22.0" layoutY="-8.0" prefHeight="91.0" prefWidth="600.0" styleClass="topHBox" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+=======
+                  <HBox fx:id="productAddBox" layoutX="-6.0" layoutY="7.0" prefHeight="91.0" prefWidth="600.0" styleClass="buttonBox" AnchorPane.bottomAnchor="-7.0" AnchorPane.leftAnchor="-6.0" AnchorPane.rightAnchor="6.0" AnchorPane.topAnchor="7.0" />
+>>>>>>> 01ca0ad2f99de77ab3c8cf8c5d44ef54646963dc
                </children></AnchorPane>
             <AnchorPane fx:id="previewAnchor" prefHeight="257.0" prefWidth="600.0" />
-            <AnchorPane fx:id="validationAnchor" prefHeight="67.0" prefWidth="600.0" />
+            <AnchorPane fx:id="validationAnchor" prefHeight="127.0" prefWidth="600.0" style="-fx-background-color: white;">
+               <children>
+                  <HBox fx:id="validationBox" prefHeight="105.0" prefWidth="600.0" styleClass="buttonBox" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+               </children>
+            </AnchorPane>
          </children>
       </VBox>
    </children>

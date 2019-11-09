@@ -6,11 +6,10 @@
 package application.test;
 
 import Init.Init;
+import static application.utilities.ViewLoaders.getView;
 import javafx.application.Application;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -26,7 +25,7 @@ public class TestCaissiere extends Application{
     public void start(Stage primaryStage) throws Exception {
        primaryStage.setMaximized(true);
          //  Parent root=(AnchorPane)getView(getLoader("layouts/caissiere/mainTabPane/mainTabPane"));
-    AnchorPane rootLayout=(AnchorPane)FXMLLoader.load(Init.class.getResource("/application/layouts/caissiere/mainTabPane/mainTabPane.fxml"));
+    AnchorPane rootLayout=(AnchorPane)  getView("layouts/caissiere/mainCaissierPane/mainCaissierPane")  ;//FXMLLoader.load(Init.class.getResource("/application/layouts/caissiere/mainTabPane/mainTabPane.fxml"));
     primaryStage.setScene(new Scene(rootLayout));  
     
     

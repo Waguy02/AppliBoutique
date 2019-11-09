@@ -1,12 +1,18 @@
-/*
+liught/*
  * Empty Stylesheet file.
  */
 
 .mainFxmlClass {
+   -fx-background-color:red;
 
 }
 
-.topHBox {
+.root{
+       -fx-background-color:lightgray;
+    
+/*}*/
+}
+.buttonBox {
     
     -fx-border-style:solid inside;
     -fx-padding: 30 10 10 10;

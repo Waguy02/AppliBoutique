@@ -7,9 +7,11 @@ package model;
 
 import dbManager.Manager;
 import interfaces.InterfaceCaissier;
+import java.util.List;
 import javafx.beans.property.MapProperty;
 import javafx.beans.property.SimpleMapProperty;
 import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.collections.ObservableMap;
 
 /**
@@ -34,7 +36,12 @@ public class Caissier extends Employe implements InterfaceCaissier {
     public MapProperty mapProduitProperty() {
         return mapProduits;
     }
-
+    
+    public ObservableList<Client> getClientList()
+    {
+        List<Client> list=Manager.em.createNamedQuery("Client.findAll", Client.class).getResultList();
+        return FXCollections.observableArrayList(list);
+    }
     /**
      * Hypothèses : - nous supposons ici que les données ont été validées dans
      * l'interface de l'application et cette fonction nous sauvegarderons que

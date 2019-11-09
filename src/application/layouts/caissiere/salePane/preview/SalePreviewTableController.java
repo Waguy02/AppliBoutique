@@ -14,6 +14,9 @@ import application.utilities.ViewLoaders;
 import application.utilities.interfaces.CustomController;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.SimpleDoubleProperty;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -21,7 +24,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.ContextMenu;
 import javafx.scene.control.MenuItem;
-import javafx.scene.control.Tab;
 import javafx.scene.control.TableView;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
@@ -98,10 +100,7 @@ public class SalePreviewTableController implements Initializable , CustomControl
        
     }
     
-
-
-
-
+private DoubleProperty sumProperty=new SimpleDoubleProperty();
 
 public void openProductCard(Produit product){
     ViewLoaders.openProductCard(product,this.baseController.getProdCombo().getItems());
@@ -146,7 +145,4 @@ public void makeTableClickable(){
     
 }
 
-
-
-    
 }

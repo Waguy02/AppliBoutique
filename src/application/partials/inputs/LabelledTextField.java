@@ -6,6 +6,7 @@
 package application.partials.inputs;
 
 import com.jfoenix.controls.JFXTextField;
+import javafx.beans.property.StringProperty;
 import javafx.geometry.Orientation;
 import javafx.scene.control.Label;
 import javafx.scene.control.Separator;
@@ -18,15 +19,28 @@ import javafx.scene.layout.HBox;
  */
 public class LabelledTextField extends HBox {
     
-    
-    private String label;
+       public StringProperty textProperty(){
+           return this.textfield.textProperty();
+       }
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+       
+    private Label label;
     private TextField textfield;
 
-    public String getLabel() {
+    public Label getLabel() {
         return label;
     }
 
-    public void setLabel(String label) {
+    public void setLabel(Label label) {
         this.label = label;
     }
 
@@ -41,17 +55,16 @@ public class LabelledTextField extends HBox {
     
     public LabelledTextField(String label){
         this.textfield=new JFXTextField();
-        this.setLabel(label);
+        this.setLabel(new Label(label));
         this.init();
         
     }
     
     public void init(){
-        
-         Label l=new Label(label);
-       l.getStyleClass().add("defaultLabel");
+
+       this.label.getStyleClass().add("defaultLabel");
        
-      this.getChildren().add(l);
+      this.getChildren().add(label);
 
       Separator sepV=new Separator(Orientation.VERTICAL);
       sepV.getStyleClass().add("defaultSeparatorV");
@@ -71,7 +84,7 @@ public class LabelledTextField extends HBox {
     }
     public LabelledTextField(String label,TextField tf){
         
-        this.setLabel(label);
+        this.setLabel(new Label(label));
         this.setTextfield(tf);
         this.init();
         

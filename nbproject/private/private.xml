@@ -28,10 +28,18 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/B:/Projets/Gestion%20de%20Boutique/Appli_Finale/src/application/layouts/caissiere/salePane/SalePaneController.java</file>
             <file>file:/B:/Projets/Gestion%20de%20Boutique/Appli_Finale/src/application/utilities/InputBindings.java</file>
             <file>file:/B:/Projets/Gestion%20de%20Boutique/Appli_Finale/src/application/layouts/caissiere/salePane/preview/SalePreviewTableController.java</file>
             <file>file:/B:/Projets/Gestion%20de%20Boutique/Appli_Finale/src/application/partials/table/CustomActionFactories.java</file>
+=======
+            <file>file:/B:/Projets/Gestion%20de%20Boutique/Appli_Finale/src/application/layouts/caissiere/salePane/finalize/saleFinalize.fxml</file>
+            <file>file:/B:/Projets/Gestion%20de%20Boutique/Appli_Finale/src/application/partials/inputs/LabelledAutoCombo.java</file>
+            <file>file:/B:/Projets/Gestion%20de%20Boutique/Appli_Finale/src/application/layouts/caissiere/salePane/finalize/SaleFinalizeController.java</file>
+            <file>file:/B:/Projets/Gestion%20de%20Boutique/Appli_Finale/src/application/layouts/caissiere/salePane/SalePaneController.java</file>
+            <file>file:/B:/Projets/Gestion%20de%20Boutique/Appli_Finale/src/application/layouts/caissiere/salePane/finalize/salefinalize.css</file>
+>>>>>>> 01ca0ad2f99de77ab3c8cf8c5d44ef54646963dc
         </group>
     </open-files>
 </project-private>

@@ -18,20 +18,20 @@ import javafx.scene.layout.HBox;
 public class LabelledAutoCombo extends HBox {
     
     
-    private String label;
+    private Label label;
     private ComboBox combo;
     
     
     
     
     public LabelledAutoCombo(String label,ComboBox combo){
-        this.setLabel(label);
+        this.setLabel(new Label(label));
         this.setCombo(combo);
         
-       Label l=new Label(label);
-       l.getStyleClass().add("defaultLabel");
+
+       this.label.getStyleClass().add("defaultLabel");
        
-      this.getChildren().add(l);
+      this.getChildren().add(this.label);
 
       Separator sepV=new Separator(Orientation.VERTICAL);
       sepV.getStyleClass().add("defaultSeparatorV");
@@ -41,20 +41,21 @@ public class LabelledAutoCombo extends HBox {
       
       
       
-      this.getChildren().add(combo);
+          this.getChildren().add(combo);
       
         this.getStyleClass().add("defaultLabelled");
       
     
     }
 
-    public String getLabel() {
+    public Label getLabel() {
         return label;
     }
 
-    public void setLabel(String label) {
+    public void setLabel(Label label) {
         this.label = label;
     }
+
 
     public ComboBox getCombo() {
         return combo;
