@@ -1,3 +1,4 @@
+
 USE supermarche;
 CREATE TABLE remise(idClient varchar(15) NOT NULL, idProduit varchar(15) NOT NULL, remise float, dateDebut date, dateFin date,
   PRIMARY KEY(idClient, idProduit), FOREIGN KEY (idClient) REFERENCES Client(id), FOREIGN KEY (idProduit) REFERENCES Produit(id));

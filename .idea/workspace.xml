@@ -1,0 +1,473 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="9de28db8-bb0b-4d75-a38d-61b74b77bb8c" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Update.sql" beforeDir="false" afterPath="$PROJECT_DIR$/Update.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/META-INF/persistence.xml" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/META-INF/persistence.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/abonnement/Abonnement.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/abonnement/Abonnement.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/abonnement/AbonnementController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/abonnement/AbonnementController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/abonnement/GenerateurCle.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/abonnement/GenerateurCle.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/abonnement/LaunchApp.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/abonnement/LaunchApp.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/abonnement/LectureFichier.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/abonnement/LectureFichier.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/abonnement/abonnement.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/abonnement/abonnement.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/application/components/productCard/ProductCardController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/application/components/productCard/ProductCardController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/application/components/productCard/productCard.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/application/components/productCard/productCard.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/application/components/productCard/productcard.css" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/application/components/productCard/productcard.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/application/global_styles/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/application/global_styles/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/application/images/search.png" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/application/images/search.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/application/layouts/caissiere/productTable/ProductTableController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/application/layouts/caissiere/productTable/ProductTableController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/application/layouts/caissiere/productTable/productTable.dtd" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/application/layouts/caissiere/productTable/productTable.dtd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/application/layouts/caissiere/productTable/productTable.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/application/layouts/caissiere/productTable/productTable.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/application/layouts/caissiere/productTable/producttable.css" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/application/layouts/caissiere/productTable/producttable.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/application/partials/IconedLabel.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/application/partials/IconedLabel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/application/test/TestCaissiere$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/application/test/TestCaissiere$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/application/test/TestCaissiere.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/application/test/TestCaissiere.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/application/utilities/AlertsManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/application/utilities/AlertsManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/application/utilities/TableViewManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/application/utilities/TableViewManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/application/utilities/Tools.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/application/utilities/Tools.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/application/utilities/ViewLoaders.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/application/utilities/ViewLoaders.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/controllers/AjoutProdGestStockController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/controllers/AjoutProdGestStockController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/controllers/Alertes.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/controllers/Alertes.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/controllers/CaissiereController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/controllers/CaissiereController$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/controllers/CaissiereController$10.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/controllers/CaissiereController$10.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/controllers/CaissiereController$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/controllers/CaissiereController$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/controllers/CaissiereController$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/controllers/CaissiereController$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/controllers/CaissiereController$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/controllers/CaissiereController$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/controllers/CaissiereController$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/controllers/CaissiereController$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/controllers/CaissiereController$6.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/controllers/CaissiereController$6.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/controllers/CaissiereController$7.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/controllers/CaissiereController$7.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/controllers/CaissiereController$8.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/controllers/CaissiereController$8.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/controllers/CaissiereController$9.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/controllers/CaissiereController$9.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/controllers/CaissiereController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/controllers/CaissiereController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/controllers/EspaceComptableController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/controllers/EspaceComptableController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/controllers/GestionnaireDeStocksPrincipaleController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/controllers/GestionnaireDeStocksPrincipaleController$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/controllers/GestionnaireDeStocksPrincipaleController$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/controllers/GestionnaireDeStocksPrincipaleController$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/controllers/GestionnaireDeStocksPrincipaleController$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/controllers/GestionnaireDeStocksPrincipaleController$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/controllers/GestionnaireDeStocksPrincipaleController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/controllers/GestionnaireDeStocksPrincipaleController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/controllers/LigneCommandeController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/controllers/LigneCommandeController$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/controllers/LigneCommandeController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/controllers/LigneCommandeController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/controllers/LigneFactureController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/controllers/LigneFactureController$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/controllers/PageAjoutProduitController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/controllers/PageAjoutProduitController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/controllers/ValidationPageController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/controllers/ValidationPageController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/controllers/WelcomeController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/controllers/WelcomeController$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/envoiMail/Mailer$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/envoiMail/Mailer$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/envoiMail/Mailer$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/envoiMail/Mailer$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/envoiMail/Mailer$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/envoiMail/Mailer$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/envoiMail/Mailer$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/envoiMail/Mailer$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/envoiMail/Mailer.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/envoiMail/Mailer.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/factures/PrintFacture.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/factures/PrintFacture.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/factures/imprimerPDF.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/factures/imprimerPDF.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/interfaces/HashCode.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/interfaces/HashCode.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/interfaces/InterfaceAdministrateur.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/interfaces/InterfaceAdministrateur.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/interfaces/InterfaceCaissier.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/interfaces/InterfaceCaissier.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/interfaces/InterfaceGestionnaireStock.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/interfaces/InterfaceGestionnaireStock.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/FXMLAccueil.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/main/FXMLAccueil.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/FXMLAccueilController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/main/FXMLAccueilController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/main/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/main/Main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/model/Administrateur.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/model/Administrateur.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/model/AgentComptable.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/model/AgentComptable.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/model/Caissier.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/model/Caissier.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/model/Categorie.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/model/Categorie.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/model/Client.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/model/Client.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/model/Commande.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/model/Commande.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/model/Employe.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/model/Employe.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/model/Facture.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/model/Facture.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/model/Fournisseur.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/model/Fournisseur.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/model/GestionnaireStock.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/model/GestionnaireStock.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/model/LigneCommandeId.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/model/LigneCommandeId.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/model/LigneFacture.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/model/LigneFacture.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/model/LigneFactureId.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/model/LigneFactureId.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/model/Produit.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/model/Produit.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/model/ProduitFournisseurId.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/model/ProduitFournisseurId.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/model/Remise.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/model/Remise.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/model/RemiseId.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/model/RemiseId.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/model/Versement.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/model/Versement.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/model/VersementId.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/model/VersementId.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/outils/Outils.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/outils/Outils.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/ressources/requete.properties" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/ressources/requete.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/statistiques/Graphique.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/statistiques/Graphique.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/supermarche/FXMLDocument.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/supermarche/FXMLDocument.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/supermarche/FXMLDocumentController.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/supermarche/FXMLDocumentController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/supermarche/SuperMarche.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/supermarche/SuperMarche.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/vues/AjoutProdGestStock.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/vues/AjoutProdGestStock.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/vues/GestionnaireDeStocksPrincipale.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/vues/GestionnaireDeStocksPrincipale.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/vues/InterfaceDAccueil.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/vues/InterfaceDAccueil.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/vues/alerteDeconnexion.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/vues/alerteDeconnexion.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/vues/caissiere.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/vues/caissiere.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/vues/espaceAdministrateur.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/vues/espaceAdministrateur.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/vues/espaceComptable.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/vues/espaceComptable.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/vues/ligneCommandeEspaceComptable.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/vues/ligneCommandeEspaceComptable.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/vues/ligneFactureEspaceComptable.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/vues/ligneFactureEspaceComptable.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/vues/pageAjoutProduit.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/vues/pageAjoutProduit.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/vues/pageFournisseur.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/vues/pageFournisseur.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/vues/validationPage.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/vues/validationPage.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/vues/welcome.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/vues/welcome.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nbproject/private/private.xml" beforeDir="false" afterPath="$PROJECT_DIR$/nbproject/private/private.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nbproject/project.properties" beforeDir="false" afterPath="$PROJECT_DIR$/nbproject/project.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/application/global_styles/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/global_styles/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/application/images/search.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/images/search.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/application/layouts/admin/mainAdminPane/MainAdminPaneController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/layouts/admin/mainAdminPane/MainAdminPaneController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/application/layouts/admin/stockTab/StockTabController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/layouts/admin/stockTab/StockTabController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/application/layouts/admin/stockTab/commandBox/CommandBoxController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/layouts/admin/stockTab/commandBox/CommandBoxController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/application/layouts/admin/stockTab/commandBox/commandBox.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/layouts/admin/stockTab/commandBox/commandBox.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/application/layouts/admin/stockTab/stockTab.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/layouts/admin/stockTab/stockTab.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/application/layouts/admin/usersTab/UsersTabController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/layouts/admin/usersTab/UsersTabController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/application/layouts/admin/usersTab/usersTab.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/layouts/admin/usersTab/usersTab.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/application/layouts/caissiere/productTable/ProductTableController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/layouts/caissiere/productTable/ProductTableController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/application/layouts/caissiere/productTable/productTable.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/layouts/caissiere/productTable/productTable.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/application/partials/IconedLabel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/partials/IconedLabel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/application/partials/Separators.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/partials/Separators.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/application/partials/inputs/LabelledAutoCombo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/partials/inputs/LabelledAutoCombo.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/application/partials/inputs/LabelledCheckBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/partials/inputs/LabelledCheckBox.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/application/partials/inputs/LabelledTextArea.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/partials/inputs/LabelledTextArea.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/application/partials/inputs/LabelledTextField.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/partials/inputs/LabelledTextField.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/application/utilities/AlertsManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/utilities/AlertsManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/application/utilities/TableViewManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/utilities/TableViewManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/application/utilities/Tools.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/utilities/Tools.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/application/utilities/interfaces/ViewDimensionner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/application/utilities/ViewDimensionner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/model/Administrateur.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Administrateur.java" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DefaultGradleProjectSettings">
+    <option name="testRunner" value="GRADLE" />
+    <option name="delegatedBuild" value="true" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/application/test/TestAdmin.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="85">
+              <caret line="5" selection-end-line="5" />
+              <folding>
+                <element signature="e#0#1609#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/application/layouts/admin/mainAdminPane/MainAdminPaneController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="340">
+              <caret line="38" column="26" selection-start-line="38" selection-start-column="26" selection-end-line="38" selection-end-column="26" />
+              <folding>
+                <element signature="e#0#5900#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/application/layouts/admin/usersTab/UsersTabController.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="483">
+              <caret line="85" column="35" selection-end-line="247" />
+              <folding>
+                <element signature="e#0#6172#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>rootVbox</find>
+      <find>childre</find>
+    </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/src/application/layouts/admin/usersTab/UsersTabController.java" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectConfigurationFiles">
+    <option name="files">
+      <list>
+        <option value="$PROJECT_DIR$/.idea/Appli_Finale.iml" />
+        <option value="$PROJECT_DIR$/.idea/vcs.xml" />
+        <option value="$PROJECT_DIR$/.idea/modules.xml" />
+        <option value="$PROJECT_DIR$/.idea/misc.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="532" />
+    <option name="y" value="251" />
+    <option name="width" value="1346" />
+    <option name="height" value="688" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="Appli_Finale" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Appli_Finale" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Appli_Finale" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Appli_Finale" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Appli_Finale" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Appli_Finale" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="application" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Appli_Finale" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Appli_Finale" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="application" type="462c0819:PsiDirectoryNode" />
+              <item name="layouts" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Appli_Finale" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Appli_Finale" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="application" type="462c0819:PsiDirectoryNode" />
+              <item name="layouts" type="462c0819:PsiDirectoryNode" />
+              <item name="admin" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Appli_Finale" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Appli_Finale" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="application" type="462c0819:PsiDirectoryNode" />
+              <item name="layouts" type="462c0819:PsiDirectoryNode" />
+              <item name="admin" type="462c0819:PsiDirectoryNode" />
+              <item name="mainAdminPane" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Appli_Finale" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Appli_Finale" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="application" type="462c0819:PsiDirectoryNode" />
+              <item name="layouts" type="462c0819:PsiDirectoryNode" />
+              <item name="admin" type="462c0819:PsiDirectoryNode" />
+              <item name="usersTab" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Appli_Finale" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Appli_Finale" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="application" type="462c0819:PsiDirectoryNode" />
+              <item name="partials" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Appli_Finale" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Appli_Finale" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="application" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Appli_Finale" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Appli_Finale" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="constantes" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/dist/Appli_Finale.jar" />
+    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.2" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="9de28db8-bb0b-4d75-a38d-61b74b77bb8c" name="Default Changelist" comment="" />
+      <created>1573466459201</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1573466459201</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <layout>
+      <window_info id="Image Layers" />
+      <window_info id="Designer" />
+      <window_info id="Capture Tool" />
+      <window_info id="Favorites" side_tool="true" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17110874" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Version Control" />
+      <window_info anchor="bottom" id="Terminal" />
+      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info anchor="bottom" id="Messages" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="right" id="Theme Preview" />
+      <window_info anchor="right" id="Maven" />
+      <window_info anchor="right" id="Capture Analysis" />
+      <window_info anchor="right" id="Palette&#9;" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/application/test/TestAdmin.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" selection-end-line="5" />
+          <folding>
+            <element signature="e#0#1609#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/application/layouts/admin/mainAdminPane/MainAdminPaneController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="38" column="26" selection-start-line="38" selection-start-column="26" selection-end-line="38" selection-end-column="26" />
+          <folding>
+            <element signature="e#0#5900#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/application/layouts/admin/usersTab/UsersTabController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="483">
+          <caret line="85" column="35" selection-end-line="247" />
+          <folding>
+            <element signature="e#0#6172#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>Appli_Finale</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>

@@ -6,11 +6,13 @@
 package application.layouts.admin.mainAdminPane;
 
 import application.layouts.admin.stockTab.StockTabController;
+import application.layouts.admin.usersTab.UsersTabController;
 import application.partials.IconedLabel;
 import application.utilities.ViewLoaders;
 import application.utilities.interfaces.CustomController;
-import application.utilities.interfaces.ViewDimensionner;
+import application.utilities.ViewDimensionner;
 import com.jfoenix.controls.JFXTabPane;
+import constantes.Devise;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
@@ -19,6 +21,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Tab;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
+import lombok.Getter;
+import lombok.Setter;
 import model.Administrateur;
 
 /**
@@ -26,7 +30,10 @@ import model.Administrateur;
  *
  * @author test
  */
+@Getter @Setter
 public class MainAdminPaneController implements Initializable, CustomController {
+    
+    public static String CURRENT_DEVISE=Devise.FCFA;
 
     @FXML
     private VBox rootVBox;
@@ -36,6 +43,94 @@ public class MainAdminPaneController implements Initializable, CustomController 
     private AnchorPane bottomBox;
     @FXML
     private JFXTabPane mainTabPane;
+
+    public VBox getRootVBox() {
+        return rootVBox;
+    }
+
+    public void setRootVBox(VBox rootVBox) {
+        this.rootVBox = rootVBox;
+    }
+
+    public AnchorPane getHeaderBox() {
+        return headerBox;
+    }
+
+    public void setHeaderBox(AnchorPane headerBox) {
+        this.headerBox = headerBox;
+    }
+
+    public AnchorPane getBottomBox() {
+        return bottomBox;
+    }
+
+    public void setBottomBox(AnchorPane bottomBox) {
+        this.bottomBox = bottomBox;
+    }
+
+    public JFXTabPane getMainTabPane() {
+        return mainTabPane;
+    }
+
+    public void setMainTabPane(JFXTabPane mainTabPane) {
+        this.mainTabPane = mainTabPane;
+    }
+
+    public Administrateur getAdmin() {
+        return admin;
+    }
+
+    public void setAdmin(Administrateur admin) {
+        this.admin = admin;
+    }
+
+    public double getImX() {
+        return imX;
+    }
+
+    public void setImX(double imX) {
+        this.imX = imX;
+    }
+
+    public double getImY() {
+        return imY;
+    }
+
+    public void setImY(double imY) {
+        this.imY = imY;
+    }
+
+    public Tab getProfileTab() {
+        return profileTab;
+    }
+
+    public void setProfileTab(Tab profileTab) {
+        this.profileTab = profileTab;
+    }
+
+    public Tab getUsersTab() {
+        return usersTab;
+    }
+
+    public void setUsersTab(Tab usersTab) {
+        this.usersTab = usersTab;
+    }
+
+    public Tab getStocksTab() {
+        return stocksTab;
+    }
+
+    public void setStocksTab(Tab stocksTab) {
+        this.stocksTab = stocksTab;
+    }
+
+    public Tab getStatsTab() {
+        return statsTab;
+    }
+
+    public void setStatsTab(Tab statsTab) {
+        this.statsTab = statsTab;
+    }
 
     /**
      *
@@ -83,7 +178,12 @@ public class MainAdminPaneController implements Initializable, CustomController 
         this.usersTab = new Tab();
 
         usersTab.setGraphic(IconedLabel.plot("Utilisateurs", "user_groups.png", true, imX, imY));
-        usersTab.setContent(ViewLoaders.getView("layouts/admin/usersTab/usersTab"));
+        FXMLLoader loader=ViewLoaders.getLoader("layouts/admin/usersTab/usersTab");
+        usersTab.setContent(ViewLoaders.getView(loader));
+        
+        UsersTabController tabController=loader.getController();
+        tabController.setAdmin(this.admin);
+        tabController.customInit();
         this.mainTabPane.getTabs().add(usersTab);
     }
 
@@ -94,12 +194,14 @@ public class MainAdminPaneController implements Initializable, CustomController 
         this.stocksTab = new Tab();
 
         stocksTab.setGraphic(IconedLabel.plot("Stocks", "stocks.png", true, imY, imY));
-        FXMLLoader loader = ViewLoaders.getLoader("layouts/admin/stocktab/stockTab");
+        FXMLLoader loader = ViewLoaders.getLoader("layouts/admin/stockTab/stockTab");
         stocksTab.setContent( ViewLoaders.getView(loader));
         
         StockTabController stockController = loader.getController();
         
         stockController.setAdmin(this.admin);
+        
+        
         stockController.customInit();
         this.stocksTab.selectedProperty().addListener((observable, oldValue , newValue) -> {
 

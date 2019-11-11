@@ -5,7 +5,8 @@
  */
 package application.partials.inputs;
 
-import javafx.geometry.Orientation;
+import application.partials.Separators;
+import static application.utilities.ViewDimensionner.bindSizes;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.Separator;
@@ -23,18 +24,19 @@ public class LabelledAutoCombo extends HBox {
     
     
     
-    
-    public LabelledAutoCombo(String label,ComboBox combo){
+     public LabelledAutoCombo(String label,ComboBox combo){
+         this(label,combo,0.3,0.6);
+     }
+    public LabelledAutoCombo(String label,ComboBox combo,double labelPercentage,double comboPercentage){
         this.setLabel(new Label(label));
         this.setCombo(combo);
         
-
+        
        this.label.getStyleClass().add("defaultLabel");
        
       this.getChildren().add(this.label);
 
-      Separator sepV=new Separator(Orientation.VERTICAL);
-      sepV.getStyleClass().add("defaultSeparatorV");
+      Separator sepV=Separators.labelSeparatorV();
       
       
       this.getChildren().add(sepV);
@@ -43,9 +45,13 @@ public class LabelledAutoCombo extends HBox {
       
           this.getChildren().add(combo);
       
-        this.getStyleClass().add("defaultLabelled");
+          this.combo.getStyleClass().add("defautlInput");
+          this.getStyleClass().add("defaultLabelled");
+        bindSizes(this.label,this,labelPercentage,1);
+        
+        bindSizes(sepV,this,1-labelPercentage-comboPercentage,1);
       
-    
+                bindSizes(this.combo,this,comboPercentage,1);
     }
 
     public Label getLabel() {

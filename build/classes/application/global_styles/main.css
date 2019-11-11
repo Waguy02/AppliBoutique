@@ -3,11 +3,49 @@
     -fx-border-style:segments;
     -fx-border-width:0.3;
     -fx-font-size:24;
-    -fx-minHeight:30px;
-    -fx-font-weight:bold;
-    -fx-margin-left:10px;
-    -fx-margin-right:10px;
+    -fx-background-color: #bf9e3b;
+    -fx-background-radius:0.5em;
+    -fx-padding:5 5 5 5;
 }
+
+
+.primary-label {
+     -fx-border-style:segments;
+    -fx-border-width:0.3;
+    -fx-font-size:22;
+    -fx-padding:5 5 5 5;
+    
+    
+}
+
+
+
+
+
+
+
+.form {
+    
+   -fx-border-style:solid inside;
+    
+    
+    
+    
+    
+    
+    
+    
+}
+
+
+
+
+
+
+
+
+
+
 
 .defaultImg {
     -fx-border:solid inside;
@@ -24,29 +62,56 @@
 
 .actionButton {
 
-    -fx-background-color:orange;
+    -fx-background-color: #bf9e3b;
+
+
+        -fx-font-color:black;
+    -fx-padding: 1 1 1 1;
     
-        -fx-font-color:orange;
-    -fx-padding:0 0 0 0;
+}
+
+
+.addingButton {
+
+    -fx-background-color: #38e887;
+
+
+        -fx-font-color:black;
+    -fx-padding: 1 1 1 1;
+    
+}
+
+
+
+.actionButton:hover {
+
+    -fx-background-color: gray;
+
+
+        -fx-font-color:#bf9e3b;
+    -fx-padding: 1 1 1 1;
     
 }
 
 .defaultLabelled {
-    -fx-border-style:solid inside;
-    -fx-background-color:lightyellow;
+    
+    -fx-background-radius:0.5em;
+    
+     
+        
+    
     
         }
         
         
-        .defaultSeparatorV {
+  .defaultSeparatorV {
             -fx-min-width:20px;
         }
         
- .defaultInput{
+ .defaultInputText{
             
-             -fx-border-style:solid inside;
+    -fx-border-style:solid inside;
     -fx-border-width:0.3;
-    -fx-margin-top:30%;
     -fx-font-size:20;
     -fx-min-width:40px;
     -fx-font-weight:bold;
@@ -69,6 +134,7 @@
        
 .baseTabPane .tab-header-area .tab-header-background {
     -fx-opacity: 0;-fx-tab-min-height:100px;
+    
 }
 
 .baseTabPane
@@ -104,4 +170,74 @@
     -fx-alignment: CENTER;
     -fx-text-fill: #96b946;
 }        
-  
+  .table-view {
+-fx-margin-top:15px;
+    -fx-padding: 50 50 50 50;
+       -fx-control-inner-background-alt: -fx-control-inner-background ;
+       -fx-border:solid outside;
+       
+}
+
+.table-view .column-header,
+.table-view .column-header-background .filler {
+    
+    
+    -fx-margin-bottom:50px;
+    
+}
+
+
+.table-view .column-header .label{
+    -fx-text-fill: white;
+    -fx-font-weight: bold; 
+    -fx-alignment: CENTER_LEFT;
+    -fx-font-size:24;
+    -fx-background-color:orange;
+    
+}
+
+
+.table-view .table-row-cell {
+        -fx-min-height:60px;
+        -fx-alignment: CENTER;
+        -fx-margin-top:10px;
+        -fx-background-color:white;
+        -fx-text-align: CENTER;
+        -fx-border:outside;
+        -fx-border-width:10 0 0 0; -fx-border-color:white;
+    
+        }
+
+.table-view .cell{
+    -fx-cell-size: 35;
+    -fx-text-fill: black;
+    -fx-font-size:20;
+                }
+
+
+.table-row-cell:selected {
+    -fx-background-color: orange; 
+
+-fx-text-fill:white;
+
+}
+
+.table-view *.scroll-bar:horizontal *.increment-button,
+.table-view *.scroll-bar:horizontal *.decrement-button {
+    -fx-background-color: null;
+    -fx-background-radius: 0;
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+}
+
+.table-view *.scroll-bar:horizontal *.increment-arrow, 
+.table-view *.scroll-bar:horizontal *.decrement-arrow {
+    -fx-background-color: null;
+    -fx-background-radius: 0;
+    -fx-background-insets: 0;
+    -fx-padding: 0;
+    -fx-shape: null;
+}
+
+
+

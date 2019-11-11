@@ -13,6 +13,7 @@
     <stylesheets>
         <URL value="@producttable.css" />
       <URL value="@../../../global_styles/main.css" />
+      <URL value="@../../../global_styles/layouts.css" />
     </stylesheets>
    <children>
       <VBox fx:id="rootVBox" layoutX="194.0" layoutY="100.0" prefHeight="400.0" prefWidth="600.0" styleClass="rootVB" stylesheets="@../../../global_styles/main.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">

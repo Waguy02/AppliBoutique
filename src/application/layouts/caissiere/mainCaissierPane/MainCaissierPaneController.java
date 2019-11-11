@@ -168,6 +168,8 @@ public class MainCaissierPaneController implements Initializable {
         this.setProductTableController(loader.getController());
         
         this.productTableController.setMainController(this);
+        this.productTableController.getSaleMode().set(true);
+        
         this.productTableController.setListeProduit(this.getListeProduit());
       this.productTableController.customInit();
 
@@ -199,6 +201,7 @@ public class MainCaissierPaneController implements Initializable {
             controller.customInit();
             this.currentSales.add(controller);
             this.mainTabPane.getTabs().add(saleTab);
+            this.mainTabPane.getSelectionModel().select(saleTab);
 
         } catch (Exception e) {
             quickAlert(AlertType.ERROR, "Echec de l'initialisation de la vente \n "+e.getStackTrace());

@@ -30,7 +30,7 @@ public class TableViewManager {
             column.setResizable(false);
             table.getColumns().add(column);
           if(column.getWidthPercentage()!=null) 
-          {column.minWidthProperty().bind(table.widthProperty().multiply(column.getWidthPercentage()*0.01));
+          {column.minWidthProperty().bind(table.widthProperty().multiply(column.getWidthPercentage()));
           
           
           

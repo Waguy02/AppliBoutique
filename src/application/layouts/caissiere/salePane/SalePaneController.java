@@ -10,11 +10,13 @@ import application.layouts.caissiere.salePane.finalize.SaleFinalizeController;
 import application.layouts.caissiere.salePane.preview.SalePreviewTableController;
 import application.partials.inputs.AutoCompleteCombo;
 import application.partials.IconedLabel;
+import application.partials.Separators;
 import application.partials.inputs.LabelledAutoCombo;
 import application.partials.inputs.LabelledTextField;
 import application.utilities.inputs.InputBindings;
 import static application.utilities.Tools.disable;
 import static application.utilities.Tools.quickAlert;
+import static application.utilities.ViewDimensionner.bindSizes;
 import static application.utilities.ViewLoaders.getLoader;
 import static application.utilities.ViewLoaders.getView;
 import application.utilities.interfaces.CustomController;
@@ -207,9 +209,12 @@ public class SalePaneController implements Initializable, CustomController {
     JFXTextField qteField;
 
     public void initAddProductBar() {
-
+        bindSizes(this.productAddBox,this.addingAnchor,0.5,1);
         prodCombo = new AutoCompleteCombo("nom", this.mainController.getListeAvailabeProduit());
-        this.productAddBox.getChildren().add(new LabelledAutoCombo("Produit ", prodCombo));
+        LabelledAutoCombo lbAuto=new LabelledAutoCombo("Produit ", prodCombo);
+        this.productAddBox.getChildren().add(lbAuto);
+        
+        bindSizes(lbAuto,this.productAddBox,1,0.5);
         this.mainController.getListeAvailabeProduit().addListener(new ListChangeListener<Produit>() {
             @Override
             public void onChanged(ListChangeListener.Change<? extends Produit> c) {
@@ -334,21 +339,24 @@ public class SalePaneController implements Initializable, CustomController {
     public void initValidationAnchor() {
         LabelledTextField total = new LabelledTextField("Total");
         total.getTextfield().textProperty().bind(sum.asString());
+        bindSizes(total,this.validationAnchor,0.2,1);
         this.validationBox.getChildren().add(total);
-        Separator sep = new Separator(Orientation.VERTICAL);
-        sep.minWidthProperty().bind(this.validationBox.widthProperty().multiply(0.2));
-        this.validationBox.getChildren().add(sep);
+        
+        this.validationBox.getChildren().add(Separators.maxSeparatorV());
 
         this.clientCombo = new AutoCompleteCombo("nom", this.mainController.getCaissier().getClientList());
-        this.validationBox.getChildren().add(new LabelledAutoCombo("Client", this.clientCombo));
-
-        Separator sep1 = new Separator(Orientation.VERTICAL);
-        sep1.minWidthProperty().bind(this.validationBox.widthProperty().multiply(0.1));
-        this.validationBox.getChildren().add(sep1);
+        LabelledAutoCombo cl=new LabelledAutoCombo("Client", this.clientCombo);
+        this.validationBox.getChildren().add(cl);
+        bindSizes(cl,this.validationAnchor,0.2,1);   
+        
+        
+        this.validationBox.getChildren().add(Separators.maxSeparatorV());
 
         this.validationButton = new JFXButton("");
-        this.validationButton.setGraphic(IconedLabel.plot("Suivant", "forward.png", false));
+        this.validationButton.setGraphic(IconedLabel.plot("Suivant", "forward.png", false,60,60));
         this.validationBox.getChildren().add(validationButton);
+        bindSizes(validationButton,this.validationBox,0.2,1);
+        this.validationButton.getStyleClass().add("actionButton");
 
         initValidationButton();     
 

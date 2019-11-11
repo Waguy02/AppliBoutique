@@ -1,14 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.net.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import java.net.URL?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.layouts.admin.usersTab.UsersTabController">
+<AnchorPane id="AnchorPane" fx:id="rootAnchor" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.layouts.admin.usersTab.UsersTabController">
     <stylesheets>
-        <URL value="@userstab.css"/>
+        <URL value="@userstab.css" />
+      <URL value="@../../../global_styles/main.css" />
+      <URL value="@../../../global_styles/form.css" />
+      <URL value="@../../../global_styles/labels.css" />
     </stylesheets>
+   <children>
+      <VBox fx:id="rootVBox" layoutX="185.0" layoutY="49.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <HBox fx:id="actionBox" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: lighgreytblue;">
+               <stylesheets>
+                  <URL value="@../../../global_styles/main.css" />
+                  <URL value="@../../../global_styles/form.css" />
+                  <URL value="@../../../global_styles/layouts.css" />
+                  <URL value="@../../../global_styles/labels.css" />
+               </stylesheets>
+            </HBox>
+            <AnchorPane fx:id="tableAnchor" prefHeight="365.0" prefWidth="600.0" style="-fx-background-color: linear-gradient(white,#bf9e3b);" />
+            <HBox fx:id="subActionBox" prefHeight="123.0" prefWidth="600.0" />
+         </children>
+      </VBox>
+   </children>
 </AnchorPane>

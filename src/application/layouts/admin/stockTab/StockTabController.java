@@ -9,7 +9,7 @@ import application.layouts.caissiere.productTable.ProductTableController;
 import static application.utilities.ViewLoaders.getLoader;
 import static application.utilities.ViewLoaders.getView;
 import application.utilities.interfaces.CustomController;
-import application.utilities.interfaces.ViewDimensionner;
+import application.utilities.ViewDimensionner;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.fxml.FXML;
@@ -88,15 +88,18 @@ public class StockTabController implements Initializable,CustomController {
         public void initProductTab() {
         FXMLLoader loader = getLoader("layouts/caissiere/productTable/productTable");
         AnchorPane root = (AnchorPane) getView(loader);
-        this.rootAnchor.setStyle("-fx-background-color:red");
+        
         
         this.rootAnchor.getChildren().add(root);
         
         ViewDimensionner.bindSizes(root,rootAnchor,1,1);
         this.setProductTableController(loader.getController());
+        
+        this.productTableController.setAdmin(this.admin);
         this.productTableController.setListeProduit(this.admin.listeProduits());
+       
         this.productTableController.getManagingMode().set(true);
-        this.productTableController.getSaleMode().set(true);
+        
         this.productTableController.customInit();
         
 

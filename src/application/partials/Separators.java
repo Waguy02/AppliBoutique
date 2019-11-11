@@ -25,7 +25,7 @@ public class Separators {
     
     public static Separator formSeparatorH(){
         Separator result =new Separator(Orientation.HORIZONTAL);
-        result.autosize();
+      
         
         result.setMinHeight(NORMAL_HEIGHT);
         return result;
@@ -34,16 +34,33 @@ public class Separators {
     
      public static Separator formSeparatorH(double height){
         Separator result =new Separator(Orientation.HORIZONTAL);
-        result.autosize();
+      
         
         result.setMinHeight(height);
         return result;
     }
+     
+     public static Separator maxSeparatorV(){
+         Separator result=new Separator(Orientation.VERTICAL);
+         result.setMinWidth(0);
+         result.setPrefWidth(100000);
+         
+         return result;
+         
+     }
+     
+     
+     public static Separator maxSeparatorH(){
+         
+         Separator result=new Separator(Orientation.HORIZONTAL);
+         result.setPrefHeight(10000);
+         return result;
+     }
     
     
     public static Separator formSeparatorV(){
         Separator result =new Separator(Orientation.VERTICAL);
-        result.autosize();
+      
         
         result.setMinWidth(TINY_WIDTH);
         return result;
@@ -51,9 +68,8 @@ public class Separators {
     
      public static Separator formSeparatorV(double width){
         Separator result =new Separator(Orientation.VERTICAL);
-        result.autosize();
-        
-        result.setMinWidth(width);
+      
+         result.setMinWidth(width);
         return result;
     }
     public static Separator  labelSeparatorV(){

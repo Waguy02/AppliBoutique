@@ -1,0 +1,46 @@
+.actionForm {
+    -fx-padding: 20 20 20 20  ;
+    
+    
+    -fx-background-color:linear-gradient(white,lightgray);
+}
+
+
+.actionForm .formGroup {
+    
+    
+}
+
+
+
+.action .labelled-text-field {
+       -fx-background-color:red;
+    
+}
+
+.discardButton {
+
+;
+	-fx-border-radius:0.2 em;
+	-fx-pref-width:1000;
+	-fx-pref-height:1000;
+	-fx-background-color:linear-gradient(white,lightgray);
+}
+
+.finalizeButton {
+
+	-fx-border-radius:0.2 em;
+	-fx-pref-width:1000;
+	-fx-pref-height:1000;
+	-fx-background-color:linear-gradient(white,lightgray);
+}
+
+.previewButton {
+
+
+	-fx-border-radius:0.2 em;
+
+	-fx-pref-width:1000;
+	-fx-pref-height:1000;
+	-fx-background-color:linear-gradient(white,lightgray);
+}

@@ -1,0 +1,6 @@
+
+.devise {
+    -fx-font-size:24;
+    -fx-background-color: linear-gradient(white,lightgray);
+    -fx-background-radius:0.5em;
+}

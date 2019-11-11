@@ -43,34 +43,6 @@ public class Tools {
     }
 
 
-    public static FXMLLoader getLoader(String viewPath){
-        FXMLLoader loader=null;
-        try{
-            loader= new FXMLLoader(Init.class.getResource("application/"+viewPath+".fxml"));
-        }
-        catch(Exception e)
-        {
-            System.out.println(e.getMessage());
-            e.printStackTrace();
-        }
-        return loader;
-    }
-
-
-    public static Node getView(FXMLLoader loader){
-        Node node=null;
-        try{
-            node=loader.load();
-
-        }
-        catch(Exception e){
-            e.printStackTrace();
-            System.out.println(e.getMessage());
-        }
-    return node;
-    }
-
-
 
     public static void hide(Node... elements) {
         for (Node noeud : elements) noeud.setVisible(false);

@@ -2,4 +2,5 @@
 
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane fx:id="rootAnchor" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="400.0" prefWidth="400.0" style="-fx-background-color: blue;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.layouts.admin.stockTab.StockTabController" />
+
+<AnchorPane fx:id="rootAnchor" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="400.0" prefWidth="400.0" stylesheets="@../../../global_styles/layouts.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.layouts.admin.stockTab.StockTabController" />

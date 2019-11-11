@@ -147,7 +147,7 @@ public class IconedLabel {
         result.getStylesheets().add(GLOBAL_CSS_SHEET);
         result.getStyleClass().add("defaultIconed");
          lb = new Label(this.textLabel);
-        lb.getStyleClass().add("defaultLabel");
+        lb.getStyleClass().add("primary-label");
         String width = String.valueOf(this.textLabel.length() * 15);
         lb.setStyle("-fx-min-width :" + width);
         //System.out.println("URL : "+getImagePath(this.iconURL));

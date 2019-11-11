@@ -2,18 +2,18 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="3">
         <file>
-            <url>src/application/layouts/caissiere/mainTabPane/mainTabePane.fxml</url>
-            <bookmark id="2">
-                <name/>
-                <line>8</line>
-                <key/>
-            </bookmark>
-        </file>
-        <file>
             <url>src/application/utilities/AlertsManager.java</url>
             <bookmark id="3">
                 <name/>
                 <line>0</line>
+                <key/>
+            </bookmark>
+        </file>
+        <file>
+            <url>src/application/layouts/caissiere/mainTabPane/mainTabePane.fxml</url>
+            <bookmark id="2">
+                <name/>
+                <line>8</line>
                 <key/>
             </bookmark>
         </file>
@@ -28,11 +28,10 @@
     </editor-bookmarks>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/B:/Projets/Gestion%20de%20Boutique/Appli_Finale/src/application/layouts/caissiere/salePane/finalize/saleFinalize.fxml</file>
-            <file>file:/B:/Projets/Gestion%20de%20Boutique/Appli_Finale/src/application/partials/inputs/LabelledAutoCombo.java</file>
-            <file>file:/B:/Projets/Gestion%20de%20Boutique/Appli_Finale/src/application/layouts/caissiere/salePane/finalize/SaleFinalizeController.java</file>
             <file>file:/B:/Projets/Gestion%20de%20Boutique/Appli_Finale/src/application/layouts/caissiere/salePane/SalePaneController.java</file>
-            <file>file:/B:/Projets/Gestion%20de%20Boutique/Appli_Finale/src/application/layouts/caissiere/salePane/finalize/salefinalize.css</file>
+            <file>file:/B:/Projets/Gestion%20de%20Boutique/Appli_Finale/src/application/layouts/caissiere/productTable/ProductTableController.java</file>
+            <file>file:/B:/Projets/Gestion%20de%20Boutique/Appli_Finale/src/application/layouts/caissiere/mainCaissierPane/MainCaissierPaneController.java</file>
+            <file>file:/B:/Projets/Gestion%20de%20Boutique/Appli_Finale/src/application/utilities/ViewDimensionner.java</file>
         </group>
     </open-files>
 </project-private>

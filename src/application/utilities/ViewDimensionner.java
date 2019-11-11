@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package application.utilities.interfaces;
+package application.utilities;
 
 import javafx.scene.layout.Region;
 
@@ -25,8 +25,16 @@ public static void bindSizes(Region child,Region parent, double widthPercentage,
     
     child.minHeightProperty().bind(parent.heightProperty().multiply(heightPercentage));
     child.maxHeightProperty().bind(parent.heightProperty().multiply(heightPercentage));
+    
 }
 
+
+
+public static void bindSizes(Region child,Region parent, double widthPercentage, double heightPercentage,boolean autoAlign){
+    
+    bindSizes(child,parent,widthPercentage,heightPercentage);
+   if(autoAlign)child.setStyle("-fx-align:center");
+}
 
 
 
