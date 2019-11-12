@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXCheckBox?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import java.net.URL?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane id="AnchorPane" fx:id="rootAnchor" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.layouts.admin.statsTab.statTable.StatTableController">
+   <stylesheets>
+      <URL value="@../../../caissiere/productTable/producttable.css" />
+      <URL value="@../../../../global_styles/main.css" />
+   </stylesheets>
+   <children>
+      <VBox fx:id="rootVBox" layoutX="194.0" layoutY="100.0" prefHeight="400.0" prefWidth="600.0" styleClass="rootVB" stylesheets="@../../../../global_styles/main.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <AnchorPane fx:id="topBar" prefHeight="89.0" prefWidth="600.0" styleClass="topBar">
+               <children>
+                  <HBox fx:id="searchBarHbox" layoutX="33.0" layoutY="29.0" prefHeight="46.0">
+                     <children>
+                        <JFXDatePicker fx:id="datePickDebut" styleClass="datePicker" />
+                        <JFXDatePicker fx:id="datePickFin" styleClass="datePicker" />
+                        <JFXButton fx:id="rechercher" mnemonicParsing="false" onAction="#search" prefHeight="49.0" prefWidth="135.0" styleClass="actionButton" text=" " />
+                        <Separator orientation="VERTICAL" prefHeight="200.0" />
+                        <Separator orientation="VERTICAL" prefHeight="50.0" prefWidth="0.0" />
+                        <JFXButton fx:id="addCriteres" mnemonicParsing="false" onAction="#addCriteres" prefHeight="49.0" prefWidth="135.0" styleClass="actionButton" text=" " />
+                     </children>
+                  </HBox>
+               </children>
+            </AnchorPane>
+            <TableView fx:id="statTable" prefHeight="310.0" prefWidth="948.0" styleClass="basicTable" />
+            <AnchorPane fx:id="footBar" styleClass="footerBar">
+               <children>
+                  <HBox fx:id="generateHbox" alignment="CENTER" prefHeight="46.0">
+                     <children>
+                        <JFXCheckBox fx:id="sendMail" styleClass="checkButton" />
+                        <JFXButton fx:id="genererRapport" mnemonicParsing="false" onAction="#genererRapport" prefHeight="49.0" prefWidth="135.0" styleClass="actionButton" text=" " />
+                        <Separator orientation="VERTICAL" prefHeight="200.0" />
+                        <JFXButton fx:id="genererGraphe" mnemonicParsing="false" onAction="#createGraph" prefHeight="49.0" prefWidth="135.0" styleClass="actionButton" text=" " />
+                        <Separator orientation="VERTICAL" prefHeight="50.0" prefWidth="0.0" />
+                        <JFXButton fx:id="afficherFacture" mnemonicParsing="false" onAction="#afficherFacture" prefHeight="49.0" prefWidth="135.0" styleClass="actionButton" text=" " />
+                     </children>
+                  </HBox>
+               </children>
+            </AnchorPane>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

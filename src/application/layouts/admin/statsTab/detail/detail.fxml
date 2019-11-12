@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.net.URL?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+
+<AnchorPane id="AnchorPane" fx:id="rootAnchor" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.layouts.admin.statsTab.detail.DetailController">
+   <stylesheets>
+      <URL value="@../../../caissiere/productTable/producttable.css" />
+      <URL value="@../../../../global_styles/main.css" />
+   </stylesheets>
+   <children>
+      <VBox fx:id="rootVBox" layoutX="194.0" layoutY="100.0" prefHeight="400.0" prefWidth="600.0" styleClass="rootVB" stylesheets="@../../../../global_styles/main.css" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+         <children>
+            <AnchorPane fx:id="topBar" prefHeight="89.0" prefWidth="600.0" styleClass="topBar">
+               <children>
+                  <HBox fx:id="titleHbox" layoutX="33.0" layoutY="29.0" prefHeight="46.0" />
+               </children>
+            </AnchorPane>
+            <TableView fx:id="statTable" prefHeight="310.0" prefWidth="948.0" styleClass="basicTable" />
+            <AnchorPane fx:id="footBar" styleClass="footerBar">
+               <children>
+                  <HBox fx:id="totalHbox" alignment="CENTER" prefHeight="46.0" />
+               </children>
+            </AnchorPane>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

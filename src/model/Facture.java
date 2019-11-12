@@ -30,6 +30,7 @@ public class Facture implements Serializable, HashCode {
     private final BooleanProperty paye = new SimpleBooleanProperty();
     private final StringProperty clientId = new SimpleStringProperty();
     private final StringProperty employeId = new SimpleStringProperty();
+    private final ObjectProperty<Date> dateReglement = new SimpleObjectProperty<>();
 
     public Facture() {
     }
@@ -74,6 +75,16 @@ public class Facture implements Serializable, HashCode {
         return this.dateEnregistrement;
     }
 
+    @Temporal(TemporalType.DATE)
+    @Column(name = "dateReglement", nullable = false)
+    public Date getDateReglement() {
+        return this.dateReglement.get();
+    }
+    
+    public ObjectProperty<Date> dateReglementProperty() {
+        return this.dateReglement;
+    }
+    
     @Id
     @Column(name = "id", nullable = false, length = 15)
     public String getId() {

@@ -37,9 +37,7 @@ public class ProductTableController implements Initializable {
 
     @FXML
     private HBox searchBarHbox;
-    @FXML
     private JFXTextField searchBarTextField;
-    @FXML
     private TableView<Produit> productTable;
     @FXML
     private AnchorPane rootAnchor;
@@ -134,7 +132,6 @@ public class ProductTableController implements Initializable {
     @FXML
     private AnchorPane topBar;
     
-    @FXML
     private JFXButton newSaleButton;
 
     

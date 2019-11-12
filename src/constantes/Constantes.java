@@ -15,4 +15,11 @@ public interface Constantes {
     public static String TITLE = "Report from Nso Boyz";
     public static String SUBTITLE = "Here is the report";
     
+    
+    //constantes pour la creation des colonnes
+    public static String LIGNEFACTURE = "lignefacture";
+    public static String CAISSIER = "caissier";
+    public static String CLIENT = "client";
+    public static String LIGNECOMMANDE = "lignecommande";
+    
 }
