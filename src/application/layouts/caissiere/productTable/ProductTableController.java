@@ -134,7 +134,6 @@ public class ProductTableController implements Initializable {
     
     private JFXButton newSaleButton;
 
-    
     private JFXButton newCommandButton;
     /**
      * Initializes the controller class.
@@ -145,7 +144,6 @@ public class ProductTableController implements Initializable {
     }
 
     public void customInit() {
-       
         
         initNewSaleButton();
         initNewCommandButton();

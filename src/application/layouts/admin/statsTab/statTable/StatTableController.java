@@ -9,6 +9,7 @@ import application.layouts.admin.statsTab.critere.CritereController;
 import application.layouts.admin.statsTab.detail.DetailController;
 import application.partials.IconedLabel;
 import application.partials.table.CustomSimpleColumn;
+import application.utilities.TableViewManager;
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXCheckBox;
 import com.jfoenix.controls.JFXDatePicker;
@@ -31,6 +32,9 @@ import java.util.Date;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import model.Caissier;
+import model.Client;
+import model.Produit;
 import outils.AlertMessages;
 
 /**
@@ -71,7 +75,7 @@ public class StatTableController implements Initializable {
     @FXML
     private AnchorPane footBar;
 
-    private CritereController critereController;
+    private CritereController critereController = new CritereController();
 
     /**
      * Initializes the controller class.
@@ -86,6 +90,18 @@ public class StatTableController implements Initializable {
 
     @FXML
     private void search(ActionEvent event) {
+        try {
+            if(critereController != null){
+                Produit p = (Produit) critereController.getProdLabel().getCombo().getSelectionModel().getSelectedItem();
+                Caissier ca = (Caissier) critereController.getCaissierLabel().getCombo().getSelectionModel().getSelectedItem();
+                Client cli = (Client) critereController.getClientLabel().getCombo().getSelectionModel().getSelectedItem();
+                String retard = (String) critereController.getRetardCombo().getSelectionModel().getSelectedItem();
+                String paye = (String) critereController.getPayeCombo().getSelectionModel().getSelectedItem();
+                int jours = Integer.parseInt(critereController.getJoursAvant().getText());
+            }
+        } catch (Exception e) {
+            System.err.println(e.getMessage());
+        }
     }
 
     @FXML
@@ -95,23 +111,8 @@ public class StatTableController implements Initializable {
     @FXML
     private void addCriteres(ActionEvent event) {
         FXMLLoader loader = ViewLoaders.getLoader("layouts/admin/statsTab/critere/critere");
-        try {
-            System.out.println("Je suis entré");
-            loader.setControllerFactory(c -> {
-                System.out.println("Je suis entré");
-                return new DetailController(fac.getId(), fac.getMontant());
-            });
-            TableViewMa
-            Scene scene = new Scene(loader.load());
-            Stage stage = new Stage();
-            stage.setTitle(titre);
-            stage.setResizable(false);
-            stage.setScene(scene);
-            stage.show();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
+        loader.setController(critereController);
+        TableViewManager.showStage("Plus de filtres", Boolean.TRUE, loader);
     }
 
     public void initFactureTable() {
@@ -137,7 +138,6 @@ public class StatTableController implements Initializable {
         sendMail.setGraphic(IconedLabel.plot("Envoyer par mail", "mail.png", true));
         genererRapport.setGraphic(IconedLabel.plot("Générer le rapport", "pdf.png", true));
         afficherFacture.setGraphic(IconedLabel.plot("Détails", "bill.png", true));
-
     }
 
     @FXML
@@ -154,24 +154,13 @@ public class StatTableController implements Initializable {
 
     private void afficherLigneFacture(Facture fac, String source, String titre) {
         FXMLLoader loader = ViewLoaders.getLoader(source);
-        try {
-            if (fac != null) {
-                System.out.println("Je suis entré");
-                loader.setControllerFactory(c -> {
-                    System.out.println("Je suis entré");
-                    return new DetailController(fac.getId(), fac.getMontant());
-                });
-                Scene scene = new Scene(loader.load());
-                Stage stage = new Stage();
-                stage.setTitle(titre);
-                stage.setResizable(false);
-                stage.setScene(scene);
-                stage.show();
-            } else {
-                Alertes.alerte(AlertMessages.selectElement[0], AlertMessages.selectElementMessage[0]);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
+        if (fac != null) {
+            loader.setControllerFactory(c -> {
+                return new DetailController(fac.getId(), fac.getMontant());
+            });
+            TableViewManager.showStage(titre, Boolean.FALSE, loader);
+        } else {
+            Alertes.alerte(AlertMessages.selectElement[0], AlertMessages.selectElementMessage[0]);
         }
     }
 }

@@ -22,4 +22,10 @@ public interface Constantes {
     public static String CLIENT = "client";
     public static String LIGNECOMMANDE = "lignecommande";
     
+    //pour les constantes de filtre
+    public static String TOUS = "Tous";
+    public static String RETARD = "En retard";
+    public static String OK = "Ok";
+    public static String PAYE = "Payé";
+    public static String IMPAYE = "Impayé";
 }

@@ -5,15 +5,13 @@
  */
 package application.partials.table;
 
+import application.utilities.RecupListes;
 import javafx.beans.value.ObservableValue;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.util.Callback;
 import model.LigneFacture;
 import constantes.Constantes;
-import dbManager.Manager;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import model.Caissier;
 import model.Client;
 import model.Facture;
@@ -51,7 +49,7 @@ public class CustomSimpleColumn<S,T> extends CustomColumn{
                 LigneFacture, String>, ObservableValue<String>>() {
                 @Override
                 public ObservableValue<String> call(TableColumn.CellDataFeatures<LigneFacture, String> param) {
-                    Produit prod = produitId(param.getValue().getLigneFactureId().getProduitId());
+                    Produit prod = RecupListes.produitId(param.getValue().getLigneFactureId().getProduitId());
                     if(prod != null){
                         return prod.nomProperty();
                     }
@@ -66,7 +64,7 @@ public class CustomSimpleColumn<S,T> extends CustomColumn{
                 Facture, String>, ObservableValue<String>>() {
                 @Override
                 public ObservableValue<String> call(TableColumn.CellDataFeatures<Facture, String> param) {
-                    Caissier cai = caissierId(param.getValue().getEmployeId());
+                    Caissier cai = RecupListes.caissierId(param.getValue().getEmployeId());
                     if(cai != null){
                         return cai.nomProperty();
                     }
@@ -81,7 +79,7 @@ public class CustomSimpleColumn<S,T> extends CustomColumn{
                 Facture, String>, ObservableValue<String>>() {
                 @Override
                 public ObservableValue<String> call(TableColumn.CellDataFeatures<Facture, String> param) {
-                    Client cl = clientId(param.getValue().getClientId());
+                    Client cl = RecupListes.clientId(param.getValue().getClientId());
                     if(cl != null){
                         return cl.nomProperty();
                     }
@@ -96,7 +94,7 @@ public class CustomSimpleColumn<S,T> extends CustomColumn{
                 LigneCommande, String>, ObservableValue<String>>() {
                 @Override
                 public ObservableValue<String> call(TableColumn.CellDataFeatures<LigneCommande, String> param) {
-                    Fournisseur fo = fournisseurId(param.getValue().getFournisseurid());
+                    Fournisseur fo = RecupListes.fournisseurId(param.getValue().getFournisseurid());
                     if(fo != null){
                         return fo.nomProperty();
                     }
@@ -111,32 +109,5 @@ public class CustomSimpleColumn<S,T> extends CustomColumn{
         this.setWidthPercentage(widthPercentage);
     }
     
-    private Produit produitId(String id) {
-        ObservableList<Produit> liste = FXCollections.observableList(Manager.em.createQuery("SELECT p FROM Produit p WHERE p.id = ?1", Produit.class).setParameter(1, id).getResultList());
-        if (liste.size() > 0)
-            return liste.get(0);
-        else
-            return null;
-    }
-    private Caissier caissierId(String id) {
-        ObservableList<Caissier> liste = FXCollections.observableList(Manager.em.createQuery("SELECT c FROM Caissier c WHERE c.id = ?1", Caissier.class).setParameter(1, id).getResultList());
-        if (liste.size() > 0)
-            return liste.get(0);
-        else
-            return null;
-    }
-    private Client clientId(String id) {
-        ObservableList<Client> liste = FXCollections.observableList(Manager.em.createQuery("SELECT c FROM Client c WHERE c.id = ?1", Client.class).setParameter(1, id).getResultList());
-        if (liste.size() > 0)
-            return liste.get(0);
-        else
-            return null;
-    }
-    private Fournisseur fournisseurId(String id) {
-        ObservableList<Fournisseur> liste = FXCollections.observableList(Manager.em.createQuery("SELECT f FROM Fournisseur f WHERE f.id = ?1", Fournisseur.class).setParameter(1, id).getResultList());
-        if (liste.size() > 0)
-            return liste.get(0);
-        else
-            return null;
-    }
+    
 }
