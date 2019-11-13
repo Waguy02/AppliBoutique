@@ -89,8 +89,7 @@ public class Client implements Serializable, HashCode {
 
     @Override
     public String toString() {
-        return "Client [ , telephone=" + telephone.get()
-                + "]";
+        return this.id.get()+"  "+this.nom.get();
     }
 
     public ObservableList<Facture> getFactures(EntityManager em) {

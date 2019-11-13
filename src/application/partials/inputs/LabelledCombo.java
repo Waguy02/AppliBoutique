@@ -16,7 +16,7 @@ import javafx.scene.layout.HBox;
  *
  * @author test
  */
-public class LabelledAutoCombo extends HBox {
+public class LabelledCombo extends HBox {
     
     
     private Label label;
@@ -24,10 +24,10 @@ public class LabelledAutoCombo extends HBox {
     
     
     
-     public LabelledAutoCombo(String label,ComboBox combo){
+     public LabelledCombo(String label,ComboBox combo){
          this(label,combo,0.3,0.6);
      }
-    public LabelledAutoCombo(String label,ComboBox combo,double labelPercentage,double comboPercentage){
+    public LabelledCombo(String label,ComboBox combo,double labelPercentage,double comboPercentage){
         this.setLabel(new Label(label));
         this.setCombo(combo);
         

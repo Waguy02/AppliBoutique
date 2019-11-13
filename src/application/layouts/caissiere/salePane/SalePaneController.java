@@ -5,14 +5,17 @@
  */
 package application.layouts.caissiere.salePane;
 
+import static application.layouts.admin.mainAdminPane.MainAdminPaneController.CURRENT_DEVISE;
 import application.layouts.caissiere.mainCaissierPane.MainCaissierPaneController;
 import application.layouts.caissiere.salePane.finalize.SaleFinalizeController;
 import application.layouts.caissiere.salePane.preview.SalePreviewTableController;
 import application.partials.inputs.AutoCompleteCombo;
 import application.partials.IconedLabel;
 import application.partials.Separators;
-import application.partials.inputs.LabelledAutoCombo;
+import application.partials.inputs.LabelledCombo;
+import application.partials.inputs.LabelledMoneyField;
 import application.partials.inputs.LabelledTextField;
+import static application.utilities.AlertsManager.showConfirmation;
 import application.utilities.inputs.InputBindings;
 import static application.utilities.Tools.disable;
 import static application.utilities.Tools.quickAlert;
@@ -24,11 +27,18 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javafx.beans.binding.Bindings;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.FloatProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleDoubleProperty;
+import javafx.beans.property.SimpleFloatProperty;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -38,21 +48,26 @@ import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.geometry.Orientation;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ComboBox;
-import javafx.scene.control.Separator;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
+import javafx.util.converter.NumberStringConverter;
+import lombok.Getter;
+import lombok.Setter;
+import model.Caissier;
 import model.Client;
 import model.Facture;
+import model.LigneFacture;
+import model.LigneFactureId;
 import model.Produit;
 
 /**
@@ -60,10 +75,13 @@ import model.Produit;
  *
  * @author test
  */
+@Getter
+@Setter
 public class SalePaneController implements Initializable, CustomController {
 
     private MainCaissierPaneController mainController;
     private SalePreviewTableController salePreviewController;
+    private Caissier caissier;
 
     @FXML
     private VBox rootVBox;
@@ -170,7 +188,6 @@ public class SalePaneController implements Initializable, CustomController {
     DoubleProperty sum = new SimpleDoubleProperty();
     BooleanProperty finalizable = new SimpleBooleanProperty(), finalizable1 = new SimpleBooleanProperty(), finalizable2 = new SimpleBooleanProperty();
 
-    @FXML
     private AnchorPane addingAnchor;
 
     @FXML
@@ -205,16 +222,33 @@ public class SalePaneController implements Initializable, CustomController {
     JFXComboBox<Produit> prodCombo;
 
     JFXComboBox<Client> clientCombo;
+    private FloatProperty unitPrice = new SimpleFloatProperty();
     JFXButton addItemButton;
     JFXTextField qteField;
 
     public void initAddProductBar() {
-        bindSizes(this.productAddBox,this.addingAnchor,0.5,1);
-        prodCombo = new AutoCompleteCombo("nom", this.mainController.getListeAvailabeProduit());
-        LabelledAutoCombo lbAuto=new LabelledAutoCombo("Produit ", prodCombo);
+
+        bindSizes(this.productAddBox, this.rootVBox, 1, 0.08);
+        prodCombo = new AutoCompleteCombo(this.mainController.getListeAvailabeProduit());
+        LabelledCombo lbAuto = new LabelledCombo("Produit ", prodCombo);
         this.productAddBox.getChildren().add(lbAuto);
-        
-        bindSizes(lbAuto,this.productAddBox,1,0.5);
+
+        lbAuto.getCombo().valueProperty().addListener((observable, oldValue, newValue) -> {
+
+            if (newValue != null) {
+                try {
+                    Produit current = (Produit) newValue;
+                    unitPrice.set(current.getPrixUnitaire());
+                } catch (Exception e) {
+
+                }
+            }
+
+        }
+        );
+
+        this.productAddBox.getChildren().add(Separators.maxSeparatorV());
+        bindSizes(lbAuto, this.productAddBox, 0.15, 1);
         this.mainController.getListeAvailabeProduit().addListener(new ListChangeListener<Produit>() {
             @Override
             public void onChanged(ListChangeListener.Change<? extends Produit> c) {
@@ -223,14 +257,42 @@ public class SalePaneController implements Initializable, CustomController {
 
         });
         qteField = new JFXTextField();
-        this.productAddBox.getChildren().add(new LabelledTextField("Quantité", qteField));
+        LabelledTextField lt = new LabelledTextField("Quantité", qteField);
+        bindSizes(lt, this.productAddBox, 0.15, 1);
+        this.productAddBox.getChildren().addAll(lt, Separators.maxSeparatorV());
 
+        LabelledMoneyField lpu = new LabelledMoneyField(CURRENT_DEVISE, "Prix unitaire");
+        bindSizes(lpu, this.productAddBox, 0.15, 1);
+        Bindings.bindBidirectional(lpu.textProperty(), unitPrice, new NumberStringConverter());
+        this.productAddBox.getChildren().addAll(lpu, Separators.maxSeparatorV());
+        lpu.disableProperty().bind(this.prodCombo.valueProperty().isNull());
         InputBindings.bindQteInput(qteField, prodCombo, "quantite", Produit.class);
 
         addItemButton = new JFXButton("", IconedLabel.plot("Ajouter", "add_64px.png", true));
+        addItemButton.getStyleClass().add("addingButton");
         this.productAddBox.getChildren().add(addItemButton);
+        this.rootVBox.getChildren().add(0, Separators.maxSeparatorH());
+
+        bindSizes(this.addItemButton, this.productAddBox, 0.1, 1);
+
+        JFXButton discardSaleButton = new JFXButton("", IconedLabel.plot("Annuler la vente", "discard.png", true));
+
+        discardSaleButton.setOnAction(event -> {
+
+            if (showConfirmation("Voulez-vous vraiment annuler cette vente")) {
+                this.isActive.set(false);
+            }
+
+        });
+        discardSaleButton.getStyleClass().add("discardButton");
+        this.productAddBox.getChildren().addAll(Separators.maxSeparatorV(), discardSaleButton);
+
+        bindSizes(discardSaleButton, this.productAddBox, 0.15, 1);
+
+        this.rootVBox.getChildren().add(2, Separators.maxSeparatorH());
 
         this.initAddButton();
+
     }
 
     public void clearProductBar() {
@@ -240,9 +302,11 @@ public class SalePaneController implements Initializable, CustomController {
     }
 
     public void initAddButton() {
+
+        this.addItemButton.getStyleClass().add("addingButton");
         this.addItemButton.setOnAction(event -> {
             Produit newP = this.prodCombo.getValue().clone();
-
+            newP.setPrixUnitaire(this.unitPrice.get());
             Integer qte = Integer.valueOf(this.qteField.getText());
 
             if (qte == 0) {
@@ -301,6 +365,7 @@ public class SalePaneController implements Initializable, CustomController {
 
         this.previewAnchor.getChildren().add(root);
 
+        bindSizes(this.previewAnchor, this.rootVBox, 1, 0.6);
         this.salePreviewController.setPreviewList(previewItems);
         this.salePreviewController.customInit();
 
@@ -337,28 +402,30 @@ public class SalePaneController implements Initializable, CustomController {
     }
 
     public void initValidationAnchor() {
-        LabelledTextField total = new LabelledTextField("Total");
+
+        bindSizes(this.validationBox, this.rootVBox, 1, 0.1);
+        LabelledMoneyField total = new LabelledMoneyField(CURRENT_DEVISE, "Total");
         total.getTextfield().textProperty().bind(sum.asString());
-        bindSizes(total,this.validationAnchor,0.2,1);
+        bindSizes(total, this.validationAnchor, 0.2, 1);
         this.validationBox.getChildren().add(total);
-        
+
         this.validationBox.getChildren().add(Separators.maxSeparatorV());
 
-        this.clientCombo = new AutoCompleteCombo("nom", this.mainController.getCaissier().getClientList());
-        LabelledAutoCombo cl=new LabelledAutoCombo("Client", this.clientCombo);
+        this.clientCombo = new AutoCompleteCombo(this.mainController.getCaissier().getClientList());
+        LabelledCombo cl = new LabelledCombo("Client", this.clientCombo);
         this.validationBox.getChildren().add(cl);
-        bindSizes(cl,this.validationAnchor,0.2,1);   
-        
-        
+        bindSizes(cl, this.validationAnchor, 0.2, 1);
+
         this.validationBox.getChildren().add(Separators.maxSeparatorV());
 
         this.validationButton = new JFXButton("");
-        this.validationButton.setGraphic(IconedLabel.plot("Suivant", "forward.png", false,60,60));
+        this.validationButton.setGraphic(IconedLabel.plot("Suivant", "forward.png", false, 60, 60));
         this.validationBox.getChildren().add(validationButton);
-        bindSizes(validationButton,this.validationBox,0.2,1);
+        bindSizes(validationButton, this.validationBox, 0.2, 1);
         this.validationButton.getStyleClass().add("actionButton");
 
-        initValidationButton();     
+        initValidationButton();
+        this.rootVBox.getChildren().add(Separators.maxSeparatorH());
 
     }
 
@@ -371,8 +438,7 @@ public class SalePaneController implements Initializable, CustomController {
                 finalizable2.set(false);
             }
         });
-        
-        
+
         this.clientCombo.valueProperty().addListener(new ChangeListener() {
             @Override
             public void changed(ObservableValue observable, Object oldValue, Object newValue) {
@@ -383,53 +449,119 @@ public class SalePaneController implements Initializable, CustomController {
                 }
             }
         });
-        
+
         finalizable.bind(finalizable1.and(finalizable2));
 
         this.validationButton.disableProperty().bind(finalizable.not());
 
-    
-    
-    this.validationButton.setOnAction(event->finalizeHandler(event));
-    
+        this.validationButton.setOnAction(event -> finalizeHandler(event));
+
     }
-    
-    public void finalizeHandler(Event event){
-    
-        Facture facture=new Facture();
-        
-        Stage finalizeStage=new Stage();
+    Stage finalizeStage;
+    BooleanProperty isFinalizing = new SimpleBooleanProperty(false);
+
+    public void finalizeHandler(Event event) {
+
+        /*s  Facture facture=new Facture();
+       
+        facture.genererCode();
+        facture.setClientId(this.clientCombo.getValue().getId());
+        for(Produit produit:this.previewItems){
+            LigneFactureId lfd=new LigneFactureId();
+           lfd.setFactureId(facture.getId());
+           lfd.setProduitId(produit.getId());
+            
+           LigneFacture lf=new LigneFacture();
+            lf.setLigneFactureId(lfd);
+            lf.setPrixUnitaire(produit.getPrixUnitaire());
+            lf.setQuantite(produit.getQuantite());
+            
+            
+           
+        }
+         */
+        finalizeStage = new Stage();
+
         finalizeStage.setTitle("Finalisation de vente");
         finalizeStage.initModality(Modality.APPLICATION_MODAL);
-      
-        
-        
-        
-        
-        
-        FXMLLoader loader=getLoader("layouts/caissiere/salePane/finalize/saleFinalize");
-        Parent root=(AnchorPane)getView(loader);
-        
+
+        FXMLLoader loader = getLoader("layouts/caissiere/salePane/finalize/saleFinalize");
+        Parent root = (AnchorPane) getView(loader);
+
         Rectangle2D primaryScreen = Screen.getPrimary().getVisualBounds();
-        
-        
-         Scene scene=new Scene(root,primaryScreen.getWidth()*0.8,primaryScreen.getHeight()*0.9);
-         
+
+        Scene scene = new Scene(root, primaryScreen.getWidth() * 0.8, primaryScreen.getHeight() * 0.9);
+
         finalizeStage.setScene(scene);
-        
-        SaleFinalizeController finalizeController=loader.getController();
-        
-        
-        finalizeController.setFacture(facture);
+        finalizeStage.initModality(Modality.APPLICATION_MODAL);
+        finalizeController = loader.getController();
+
+        finalizeController.setSaleController(this);
+
         finalizeController.setClient(this.clientCombo.getValue());
         finalizeController.customInit();
-        
-        finalizeStage.show();
-        
-        
-        
-        
-    }
-    
 
+        finalizeStage.show();
+        this.isFinalizing.set(true);
+
+        this.isFinalizing.addListener((observable, oldValue, newValue) -> {
+
+            if (!newValue) {
+                finalizeStage.close();
+            }
+        });
+
+    }
+
+    private SaleFinalizeController finalizeController;
+
+    public void validateHandler(Event event) {
+
+        Facture facture = new Facture();
+        facture.genererCode();
+        facture.setClientId(this.clientCombo.getValue().getId());
+        facture.setEmployeId(this.caissier.getId());
+        facture.setDateEnregistrement(new Date());
+
+        LigneFacture llf[] = new LigneFacture[previewItems.size()];
+        int counter=0;
+        for (Produit p : this.previewItems) {
+               
+            LigneFacture lf = new LigneFacture();
+            LigneFactureId lfID = new LigneFactureId();
+
+            lfID.setFactureId(facture.getId());
+            lfID.setProduitId(p.getId());
+
+            lf.setLigneFactureId(lfID);
+            lf.setPrixUnitaire(p.getPrixUnitaire());
+            lf.setQuantite(p.getQuantite());
+            llf[counter++]=lf;
+            
+            
+
+                                }
+        
+        try{
+        this.caissier.effectuerVente(facture,llf);
+        }
+        catch(Exception e){
+           System.out.print(e.getMessage());
+           e.printStackTrace();
+           quickAlert(AlertType.ERROR,"Erreur survenue lors de l'enregistrement de la vente");
+            return;
+        }
+        
+        quickAlert(AlertType.INFORMATION, "Opération réussie", "Achat enregistré avec succès");
+
+        facture.setMontant((float) this.finalizeController.getToPayValue().get());
+
+        boolean isPaid = this.finalizeController.getPaidValue().get() == this.finalizeController.getToPayValue().get();
+        facture.setPaye(isPaid);
+        this.isFinalizing.set(false);
+        this.isActive.set(false);
+
+    }
+
+    private BooleanProperty isActive = new SimpleBooleanProperty(true);
 }

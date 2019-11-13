@@ -11,9 +11,12 @@ import application.utilities.interfaces.CustomController;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.collections.ObservableList;
+import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TableView;
+import javafx.scene.input.MouseButton;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import lombok.Getter;
 import lombok.Setter;
@@ -65,6 +68,12 @@ public class UserTableController implements Initializable,CustomController {
       
     
     
+    
+    
     }
     
+    
+    
+    
+     
 }

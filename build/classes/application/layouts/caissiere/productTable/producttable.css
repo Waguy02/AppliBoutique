@@ -8,15 +8,6 @@
 }
 
 
-.searchBar {
-      -fx-background-color:white;
-    -fx-font-size: 20;
-    -fx-font-weight:bold;
-    -fx-border:solid inside;
-    -fx-border-width:0.2;
-    -fx-border-radius:0.2em;
-    -fx-padding :10 10 10 10 ;
-}
 
 .topBar{
     

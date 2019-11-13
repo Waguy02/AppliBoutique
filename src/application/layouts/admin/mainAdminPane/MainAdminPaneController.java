@@ -44,94 +44,7 @@ public class MainAdminPaneController implements Initializable, CustomController 
     @FXML
     private JFXTabPane mainTabPane;
 
-    public VBox getRootVBox() {
-        return rootVBox;
-    }
-
-    public void setRootVBox(VBox rootVBox) {
-        this.rootVBox = rootVBox;
-    }
-
-    public AnchorPane getHeaderBox() {
-        return headerBox;
-    }
-
-    public void setHeaderBox(AnchorPane headerBox) {
-        this.headerBox = headerBox;
-    }
-
-    public AnchorPane getBottomBox() {
-        return bottomBox;
-    }
-
-    public void setBottomBox(AnchorPane bottomBox) {
-        this.bottomBox = bottomBox;
-    }
-
-    public JFXTabPane getMainTabPane() {
-        return mainTabPane;
-    }
-
-    public void setMainTabPane(JFXTabPane mainTabPane) {
-        this.mainTabPane = mainTabPane;
-    }
-
-    public Administrateur getAdmin() {
-        return admin;
-    }
-
-    public void setAdmin(Administrateur admin) {
-        this.admin = admin;
-    }
-
-    public double getImX() {
-        return imX;
-    }
-
-    public void setImX(double imX) {
-        this.imX = imX;
-    }
-
-    public double getImY() {
-        return imY;
-    }
-
-    public void setImY(double imY) {
-        this.imY = imY;
-    }
-
-    public Tab getProfileTab() {
-        return profileTab;
-    }
-
-    public void setProfileTab(Tab profileTab) {
-        this.profileTab = profileTab;
-    }
-
-    public Tab getUsersTab() {
-        return usersTab;
-    }
-
-    public void setUsersTab(Tab usersTab) {
-        this.usersTab = usersTab;
-    }
-
-    public Tab getStocksTab() {
-        return stocksTab;
-    }
-
-    public void setStocksTab(Tab stocksTab) {
-        this.stocksTab = stocksTab;
-    }
-
-    public Tab getStatsTab() {
-        return statsTab;
-    }
-
-    public void setStatsTab(Tab statsTab) {
-        this.statsTab = statsTab;
-    }
-
+    
     /**
      *
      * Valeur de Test pour l'administrateur
@@ -142,8 +55,8 @@ public class MainAdminPaneController implements Initializable, CustomController 
     private Tab profileTab,
             usersTab,
             stocksTab,
-            statsTab;
-
+            statsTab,
+            partenarTab;
     /**
      * Initializes the controller class.
      */
@@ -230,5 +143,12 @@ public class MainAdminPaneController implements Initializable, CustomController 
         this.mainTabPane.getTabs().add(statsTab);
 
     }
-
+    
+    
+    
+    public void initParternarTab(){
+        
+        
+        
+    }
 }

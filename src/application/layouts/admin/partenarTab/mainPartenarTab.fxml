@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXTabPane?>
+<?import java.net.URL?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.141" fx:controller="application.layouts.admin.partenarTab.MainPartenarTabController">
+    <stylesheets>
+        <URL value="@mainpartenartab.css" />
+      <URL value="@../../../global_styles/form.css" />
+      <URL value="@../../../global_styles/labels.css" />
+      <URL value="@../../../global_styles/layouts.css" />
+      <URL value="@../../../global_styles/main.css" />
+    </stylesheets>
+   <children>
+      <JFXTabPane />
+      <JFXTabPane fx:id="mainTabPane" layoutX="130.0" layoutY="96.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+   </children>
+</AnchorPane>

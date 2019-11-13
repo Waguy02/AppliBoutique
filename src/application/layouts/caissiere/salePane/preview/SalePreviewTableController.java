@@ -84,12 +84,12 @@ public class SalePreviewTableController implements Initializable , CustomControl
     
     
     public void initPreviewTable(){
-    CustomSimpleColumn<Produit, String> colID = new CustomSimpleColumn("ID", "id", 15.0),
-    colLibelle = new CustomSimpleColumn("nom", "Nom",30.0);
-   CustomSimpleColumn<Produit, Integer> colQuantite = new CustomSimpleColumn("Quantite", "quantite", 10.0);
-   CustomSimpleColumn<Produit, Double> colPu = new CustomSimpleColumn("Prix Unitaire", "prixUnitaire", 15.0);
-   CustomSimpleColumn<Produit, Double> colPt = new CustomSimpleColumn("Prix Total", "prixTotal", 15.0);
-   CustomActionColumn<Produit,String> colRm=new CustomActionColumn("Action",10.0);
+    CustomSimpleColumn<Produit, String> colID = new CustomSimpleColumn("ID", "id", 0.15),
+    colLibelle = new CustomSimpleColumn("nom", "Nom",0.30);
+   CustomSimpleColumn<Produit, Integer> colQuantite = new CustomSimpleColumn("Quantite", "quantite", 0.15);
+   CustomSimpleColumn<Produit, Double> colPu = new CustomSimpleColumn("Prix Unitaire", "prixUnitaire", 0.15);
+   CustomSimpleColumn<Produit, Double> colPt = new CustomSimpleColumn("Prix Total", "prixTotal", 0.15);
+   CustomActionColumn<Produit,String> colRm=new CustomActionColumn("Action",0.1);
    colRm.setCellFactory(CustomActionFactories.<Produit>removeActionCallback(previewTable));
    
    
@@ -105,47 +105,47 @@ private DoubleProperty sumProperty=new SimpleDoubleProperty();
 
 
 public void openProductCard(Produit product){
-    ViewLoaders.openProductCard(product,this.baseController.getProdCombo().getItems());
+    ViewLoaders.openProductCard(product,this.baseController.getProdCombo().getItems(),true,false,false);
     
 }
 
 static Produit selectedProduct;
-public void makeTableClickable(){
-    
-    ContextMenu cm = new ContextMenu();
-    cm.getStyleClass().add("default_context");
-    MenuItem menu = new MenuItem("Ouvrir la fiche du produit");
-    cm.getItems().add(menu);
-    
-    menu.setOnAction(new EventHandler<ActionEvent>() {
-                    @Override
-                    public void handle(ActionEvent event) {
-                       openProductCard(selectedProduct);
-                    }});
-    
- 
-    this.previewTable.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
-@Override
-       public void handle(MouseEvent t) {
-        cm.hide();
-       
-       selectedProduct=previewTable.getSelectionModel().getSelectedItem();
-       if(selectedProduct==null)return;
-        
-        if(t.getButton() == MouseButton.SECONDARY) {
-        System.out.println("Bouton droit");   
-            cm.show(previewTable, t.getScreenX(), t.getScreenY());
+    public void makeTableClickable(){
+
+        ContextMenu cm = new ContextMenu();
+        cm.getStyleClass().add("default_context");
+        MenuItem menu = new MenuItem("Ouvrir la fiche du produit");
+        cm.getItems().add(menu);
+
+        menu.setOnAction(new EventHandler<ActionEvent>() {
+                        @Override
+                        public void handle(ActionEvent event) {
+                           openProductCard(selectedProduct);
+                        }});
+
+
+        this.previewTable.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+    @Override
+           public void handle(MouseEvent t) {
+            cm.hide();
+
+           selectedProduct=previewTable.getSelectionModel().getSelectedItem();
+           if(selectedProduct==null)return;
+
+            if(t.getButton() == MouseButton.SECONDARY) {
+            System.out.println("Bouton droit");   
+                cm.show(previewTable, t.getScreenX(), t.getScreenY());
+            }
         }
+    });
+
+
+
+
+
+
+
     }
-});
-    
-    
-    
-    
-    
-    
-    
-}
 
 
     

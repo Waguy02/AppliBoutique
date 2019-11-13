@@ -8,6 +8,8 @@ import javafx.beans.property.SimpleIntegerProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javax.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * The persistent class for the ligneCommande database table.
@@ -16,13 +18,16 @@ import javax.persistence.*;
 @Entity(name = "ligneCommande")
 @Table(name = "ligneCommande")
 @NamedQuery(name = "LigneCommande.findAll", query = "SELECT l FROM ligneCommande l")
+@Getter @Setter
 public class LigneCommande implements Serializable {
 
     private LigneCommandeId ligneCommandeId;
     private final StringProperty fournisseurid = new SimpleStringProperty();
     private final FloatProperty prixUnitaire = new SimpleFloatProperty();
     private final IntegerProperty quantite = new SimpleIntegerProperty();
-
+    private String produitId;
+    
+    
     public LigneCommande() {
     }
 

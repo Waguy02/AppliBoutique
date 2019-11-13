@@ -5,9 +5,15 @@
  */
 package application.layouts.caissiere.salePane.finalize;
 
+import static application.layouts.admin.mainAdminPane.MainAdminPaneController.CURRENT_DEVISE;
+import application.layouts.caissiere.salePane.SalePaneController;
 import application.partials.IconedLabel;
+import application.partials.Separators;
+import application.partials.inputs.LabelledMoneyField;
 import application.partials.inputs.LabelledTextField;
+import static application.utilities.AlertsManager.showConfirmation;
 import static application.utilities.Tools.disable;
+import static application.utilities.ViewDimensionner.bindSizes;
 import application.utilities.inputs.InputBindings;
 import application.utilities.interfaces.CustomController;
 import com.jfoenix.controls.JFXButton;
@@ -23,14 +29,18 @@ import javafx.scene.control.Separator;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.util.converter.NumberStringConverter;
+import lombok.Getter;
+import lombok.Setter;
 import model.Client;
 import model.Facture;
+import model.Produit;
 
 /**
  * FXML Controller class
  *
  * @author test
  */
+@Getter @Setter 
 public class SaleFinalizeController implements Initializable,CustomController {
 
     @FXML
@@ -45,55 +55,10 @@ public class SaleFinalizeController implements Initializable,CustomController {
     private Facture facture;
     @FXML
     private VBox rootVBox;
-
-    public HBox getTopBar() {
-        return topBar;
-    }
-
-    public void setTopBar(HBox topBar) {
-        this.topBar = topBar;
-    }
-
-    public VBox getContentBOx() {
-        return contentBOx;
-    }
-
-    public void setContentBOx(VBox contentBOx) {
-        this.contentBOx = contentBOx;
-    }
-
-    public HBox getActionBox() {
-        return actionBox;
-    }
-
-    public void setActionBox(HBox actionBox) {
-        this.actionBox = actionBox;
-    }
-
-    public Client getClient() {
-        return client;
-    }
-
-    public void setClient(Client client) {
-        this.client = client;
-    }
-
-    public Facture getFacture() {
-        return facture;
-    }
-
-    public void setFacture(Facture facture) {
-        this.facture = facture;
-    }
-
-    public VBox getRootVBox() {
-        return rootVBox;
-    }
-
-    public void setRootVBox(VBox rootVBox) {
-        this.rootVBox = rootVBox;
-    }
+    @FXML
+    private HBox titleBar;
     
+    private SalePaneController saleController;
     
 
     /**
@@ -108,60 +73,70 @@ public class SaleFinalizeController implements Initializable,CustomController {
     @Override
     public void customInit() {
      initSizes();
+     initTitleBar();
      initTopBar();
      initMoneyTab();
      initActionBox();
     }
     
    public void initSizes(){
-       this.topBar.minHeightProperty().bind(this.rootVBox.heightProperty().multiply(0.2));
-       this.topBar.maxWidthProperty().bind(this.rootVBox.widthProperty());
-       this.topBar.minWidthProperty().bind(this.rootVBox.widthProperty());
-       
-       
-       
-       this.contentBOx.minHeightProperty().bind(this.rootVBox.heightProperty().multiply(0.6));
-       this.contentBOx.minWidthProperty().bind(this.rootVBox.widthProperty()); 
-       this.contentBOx.maxWidthProperty().bind(this.rootVBox.widthProperty()); 
-       
-       this.actionBox.minHeightProperty().bind(this.rootVBox.heightProperty().multiply(0.2));
-        this.actionBox.minWidthProperty().bind(this.rootVBox.widthProperty());
-        this.actionBox.maxWidthProperty().bind(this.rootVBox.widthProperty());
+       bindSizes(this.titleBar,this.rootVBox,1,0.1);
+       bindSizes(this.topBar,this.rootVBox,1,0.1);
+       bindSizes(this.contentBOx,this.rootVBox,1,0.6);
+       bindSizes(this.actionBox,this.rootVBox,1,0.1);  }
+    
+    public void initTitleBar(){
         
-   }
-    
-    
+        
+        IconedLabel label=new IconedLabel("Finalisation de vente","handshake.png");
+        label.setImgX(80.0);
+        label.setImgY(80.0);
+        this.titleBar.getChildren().add(label.plot(true));
+        this.rootVBox.getChildren().add(1,Separators.maxSeparatorH());
+        
+    }
     public void initTopBar(){
         LabelledTextField clientField=new LabelledTextField("Client");
         clientField.getTextfield().setText(this.client.toString());
         disable(clientField.getTextfield());
         
-        
-        clientField.minHeightProperty().bind(this.topBar.heightProperty());
-        clientField.minWidthProperty().bind(this.topBar.widthProperty());
-        this.topBar.getChildren().add(clientField);
+        bindSizes(clientField,this.topBar,1,0.8);
+        this.topBar.getChildren().addAll(clientField,Separators.maxSeparatorH());
         
     }
     
+             private DoubleProperty toPayValue=new SimpleDoubleProperty();
+             DoubleProperty paidValue=new SimpleDoubleProperty();
     public void initMoneyTab(){
-         LabelledTextField toPay=new LabelledTextField("MontantTotal");
-         toPay.textProperty().set(String.valueOf(this.facture.getMontant()));
+         LabelledMoneyField toPay=new LabelledMoneyField(CURRENT_DEVISE,"Montant Total");
+         Float sumPrice=0.0f;
+         for(Produit p:this.saleController.getPreviewItems()){
+             sumPrice+=p.getQuantite()*p.getPrixUnitaire();
+         }
+         System.out.println("Somme : "+sumPrice);
+         facture=new Facture();
+         facture.setMontant(sumPrice);
+         
          disable(toPay);
-         DoubleProperty toPayValue=new SimpleDoubleProperty();
+         toPayValue.set(sumPrice);
+
          Bindings.bindBidirectional( toPay.textProperty(),toPayValue,new NumberStringConverter());
          Separator sep1=new Separator(Orientation.VERTICAL);
-         this.contentBOx.getChildren().add(toPay);
-         this.contentBOx.getChildren().add(sep1);
+         bindSizes(toPay,this.contentBOx,1,0.2);         
+         this.contentBOx.getChildren().addAll(toPay,Separators.maxSeparatorH());
          
          
          
-         LabelledTextField paid=new LabelledTextField("Montant Versé");
-         InputBindings.bindQteInput(paid.getTextfield(), facture,"montant");
-         DoubleProperty paidValue=new SimpleDoubleProperty();
+         
+         LabelledMoneyField paid=new LabelledMoneyField(CURRENT_DEVISE,"Montant Versé");
+         InputBindings.bindQteInput(paid.getTextfield(),facture,"montant");
+         paidValue=new SimpleDoubleProperty();
          Bindings.bindBidirectional( paid.textProperty(),paidValue,new NumberStringConverter());
-         Separator sep2=new Separator(Orientation.VERTICAL);
-         this.contentBOx.getChildren().add(paid);
-         this.contentBOx.getChildren().add(sep2);
+         bindSizes(paid,this.contentBOx,1,0.2);
+         
+         
+         
+         this.contentBOx.getChildren().addAll(paid,Separators.maxSeparatorH());
          
          
          
@@ -169,46 +144,74 @@ public class SaleFinalizeController implements Initializable,CustomController {
          
          
          
-         LabelledTextField remind=new LabelledTextField("Montant Restant");
+         
+         LabelledMoneyField remind=new LabelledMoneyField(CURRENT_DEVISE,"Montant Restant");
          DoubleProperty remindValue=new SimpleDoubleProperty();
          remindValue.bind(toPayValue.add(paidValue.negate()));
          remind.textProperty().bind(remindValue.asString());
-         disable(remind);
-         Separator sep3=new Separator(Orientation.VERTICAL);
+         disable(remind.getTextfield());
          
-         this.contentBOx.getChildren().add(remind);
-         this.contentBOx.getChildren().add(sep3);
+         bindSizes(remind,this.contentBOx,1,0.2);
+         
+         
+         this.contentBOx.getChildren().addAll(remind,Separators.maxSeparatorH());
+         
          
          
          
         
     }
+    
 
 
     public void initActionBox(){
         
-        
-            JFXButton previewButton=new JFXButton();
+            
+            /*JFXButton previewButton=new JFXButton();
+            previewButton.getStyleClass().add("previewButton");
             previewButton.setGraphic(IconedLabel.plot("Aperçu de la facture","preview.png", true));
+            */
+            
             
             JFXButton confirmButton=new JFXButton();
-            confirmButton.setGraphic(IconedLabel.plot("Finaliser","standardConfirm.png",true));
+            confirmButton.setGraphic(IconedLabel.plot("Finaliser","standardConfirm.png",true,50,50));
+            confirmButton.getStyleClass().add("previewButton");
+            confirmButton.setOnAction(event->
+            {
+                if(showConfirmation("Voulez-vous vraiment finaliser cette vente?")){
+                    this.saleController.validateHandler(event);
+                }
+                
+                
+            }
+            );
+            
+            
+            
+            
+            
+            
+            
            
             JFXButton discardButton=new JFXButton();
-            discardButton.setGraphic(IconedLabel.plot("Annuler","discard.png", true));
+            discardButton.setGraphic(IconedLabel.plot("Retour","discard.png", true ,50,50));
+            discardButton.getStyleClass().add("previewButton");
+            discardButton.setOnAction(event->{
+                
+                
+                
+                if(showConfirmation("Voulez-vous modifier les informations de cete vente?")){
+                    
+                    this.saleController.getIsFinalizing().set(false);
+                
+                }
+                
+                
+            });
             
             
             
-            Separator separator1,separator2;
-            
-            separator1=new Separator(Orientation.VERTICAL);
-            separator2=new Separator(Orientation.VERTICAL);
-            
-            separator1.minWidthProperty().bind(this.rootVBox.widthProperty().multiply(0.2));
-            separator2.minWidthProperty().bind(this.rootVBox.widthProperty().multiply(0.2));
-            
-            
-            this.actionBox.getChildren().addAll(previewButton,separator1,confirmButton,separator2,discardButton);
+            this.actionBox.getChildren().addAll(Separators.maxSeparatorV(),confirmButton,Separators.maxSeparatorV(),discardButton,Separators.maxSeparatorV());
             
             
 }

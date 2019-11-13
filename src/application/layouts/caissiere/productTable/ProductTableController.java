@@ -7,7 +7,6 @@ package application.layouts.caissiere.productTable;
 
 import application.layouts.admin.mainAdminPane.MainAdminPaneController;
 import application.layouts.admin.stockTab.commandBox.CommandBoxController;
-import application.layouts.admin.usersTab.userCrudBox.UserCrudBoxController;
 import application.layouts.caissiere.mainCaissierPane.MainCaissierPaneController;
 import application.partials.table.CustomSimpleColumn;
 import application.partials.IconedLabel;
@@ -24,25 +23,27 @@ import model.Produit;
 import static application.utilities.TableViewManager.addTableColumns;
 import static application.utilities.TableViewManager.enableProductSimpleFiltering;
 import static application.utilities.Tools.blur;
-import static application.utilities.Tools.hide;
-import static application.utilities.Tools.show;
 import static application.utilities.Tools.unBlur;
-import static application.utilities.ViewDimensionner.bindSizes;
 import application.utilities.ViewLoaders;
-import static application.utilities.ViewLoaders.getLoader;
-import static application.utilities.ViewLoaders.getView;
 import com.jfoenix.controls.JFXButton;
 import java.util.function.Predicate;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Scene;
+import javafx.scene.control.ContextMenu;
+import javafx.scene.control.MenuItem;
+import javafx.scene.input.MouseButton;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Modality;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
+import lombok.Getter;
+import lombok.Setter;
 import model.Administrateur;
 
 /**
@@ -50,6 +51,8 @@ import model.Administrateur;
  *
  * @author test
  */
+
+@Getter @Setter
 public class ProductTableController implements Initializable {
 
     @FXML
@@ -67,122 +70,11 @@ public class ProductTableController implements Initializable {
 
     private Administrateur admin;
 
-    public AnchorPane getCommandAnchor() {
-        return commandAnchor;
-    }
 
-    public void setCommandAnchor(AnchorPane commandAnchor) {
-        this.commandAnchor = commandAnchor;
-    }
-
-    public Administrateur getAdmin() {
-        return admin;
-    }
-
-    public void setAdmin(Administrateur admin) {
-        this.admin = admin;
-    }
-
-    public CommandBoxController getCommandController() {
-        return commandController;
-    }
-
-    public void setCommandController(CommandBoxController commandController) {
-        this.commandController = commandController;
-    }
-
-    public BooleanProperty getIsActiveCommand() {
-        return isActiveCommand;
-    }
-
-    public void setIsActiveCommand(BooleanProperty isActiveCommand) {
-        this.isActiveCommand = isActiveCommand;
-    }
-
-    private MainCaissierPaneController mainController;
+     private MainCaissierPaneController mainController;
     private MainAdminPaneController mainAdminPaneController;
 
     private ObservableList<Produit> listeProduit;
-
-    public MainAdminPaneController getMainAdminPaneController() {
-        return mainAdminPaneController;
-    }
-
-    public void setMainAdminPaneController(MainAdminPaneController mainAdminPaneController) {
-        this.mainAdminPaneController = mainAdminPaneController;
-    }
-
-    public ObservableList<Produit> getListeProduit() {
-        return listeProduit;
-    }
-
-    public void setListeProduit(ObservableList<Produit> listeProduit) {
-        this.listeProduit = listeProduit;
-    }
-
-    public HBox getSearchBarHbox() {
-        return searchBarHbox;
-    }
-
-    public void setSearchBarHbox(HBox searchBarHbox) {
-        this.searchBarHbox = searchBarHbox;
-    }
-
-    public JFXTextField getSearchBarTextField() {
-        return searchBarTextField;
-    }
-
-    public void setSearchBarTextField(JFXTextField searchBarTextField) {
-        this.searchBarTextField = searchBarTextField;
-    }
-
-    public TableView<Produit> getProductTable() {
-        return productTable;
-    }
-
-    public void setProductTable(TableView<Produit> productTable) {
-        this.productTable = productTable;
-    }
-
-    public AnchorPane getRootAnchor() {
-        return rootAnchor;
-    }
-
-    public void setRootAnchor(AnchorPane rootAnchor) {
-        this.rootAnchor = rootAnchor;
-    }
-
-    public VBox getRootVBox() {
-        return rootVBox;
-    }
-
-    public void setRootVBox(VBox rootVBox) {
-        this.rootVBox = rootVBox;
-    }
-
-    public MainCaissierPaneController getMainController() {
-        return mainController;
-    }
-
-    public void setMainController(MainCaissierPaneController mainController) {
-        this.mainController = mainController;
-    }
-
-    public AnchorPane getTopBar() {
-        return topBar;
-    }
-
-    public void setTopBar(AnchorPane topBar) {
-        this.topBar = topBar;
-    }
-
-    public JFXButton getNewSaleButton() {
-        return newSaleButton;
-    }
-
-    public void setNewSaleButton(JFXButton newSaleButton) {
-        this.newSaleButton = newSaleButton;
-    }
 
     @FXML
     private AnchorPane topBar;
@@ -224,14 +116,16 @@ public class ProductTableController implements Initializable {
 
         System.out.println(this.searchBarTextField);
 
-        enableProductSimpleFiltering(productTable, getListeProduit(), this.searchBarTextField);
-
+        enableProductSimpleFiltering(productTable,listeProduit, this.searchBarTextField);
+        this.makeTableClickable();
     }
 
     public void makeResponsive() {
 
         productTable.minHeightProperty().bind(rootVBox.heightProperty().subtract(topBar.heightProperty()));
     }
+    
+    
 
     public void initSearchBar() {
 
@@ -311,7 +205,7 @@ public class ProductTableController implements Initializable {
                 this.commandAnchor.setStyle("-fx-border-style:solid inside;-fx-border-radius:1em");
                 this.commandController = loader.getController();
 
-                commandController.setAdministrateur(this.getAdmin());
+                commandController.setAdministrateur(this.admin);
 
                 addStage.setTitle("Nouvelle commande de produits");
                 addStage.initModality(Modality.APPLICATION_MODAL);
@@ -340,5 +234,95 @@ public class ProductTableController implements Initializable {
         this.commandController.customInit();
 
     }
+    
+    
+    
+    
+    
+    
+    Produit selectedProduct;
+    
+    Boolean readingMode=false,editingMode=false,registeringMode=false;
+    public void makeTableClickable(){
+
+        ContextMenu cm = new ContextMenu();
+        cm.getStyleClass().add("default_context");
+        MenuItem menu = new MenuItem("Ouvrir la fiche du produit");
+        
+                MenuItem menu2 = new MenuItem("Vendre ");
+        cm.getItems().add(menu);
+        cm.getItems().add(menu2);
+        
+        
+        
+        
+        
+        if(this.saleMode.get()){
+            readingMode=true;
+            
+            
+        }
+        
+        if(this.managingMode.get()){
+            editingMode=true;
+            registeringMode=true;
+                
+        }
+        menu.setOnAction(new EventHandler<ActionEvent>() {
+                        @Override
+                        public void handle(ActionEvent event) {
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                            
+                           ViewLoaders.openProductCard(selectedProduct,listeProduit,readingMode,editingMode,registeringMode);
+                        }});
+
+
+        this.productTable.addEventHandler(MouseEvent.MOUSE_CLICKED, new EventHandler<MouseEvent>() {
+    @Override
+           public void handle(MouseEvent t) {
+            cm.hide();
+
+           selectedProduct=productTable.getSelectionModel().getSelectedItem();
+           if(selectedProduct==null)return;
+
+            if(t.getButton() == MouseButton.SECONDARY) {
+            System.out.println("Bouton droit");   
+                cm.show(productTable, t.getScreenX(), t.getScreenY());
+            }
+        }
+    });
+
+
+        menu2.setOnAction(event->{
+            
+            openProductSale(selectedProduct);
+            
+        });
+
+
+
+
+
+    }
+    
+    
+    
+    
+    
+    public void openProductSale(Produit product){
+        
+        
+    }
+    
+    
+    
 
 }

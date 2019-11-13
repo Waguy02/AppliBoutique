@@ -15,6 +15,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import model.Employe;
 import model.Produit;
 
 /**
@@ -128,7 +129,48 @@ public class TableViewManager {
             
         }
         
+       
+    
+    public static void enableUserSimpleFiltering(TableView table,ObservableList list,TextField searchBar){
         
+          FilteredList flListe = new FilteredList(list, p -> true);
+        
+         searchBar.textProperty().addListener(((observable, oldValue, newValue) -> {
+             
+             
+            Predicate p0=p->{
+                
+                if (newValue == null || newValue.isEmpty()) {
+                    return true;
+                }
+            
+                 String lowerCaseFilter = newValue.toLowerCase();
+     Employe prod = (Employe) p;
+                if (prod.getNom().toLowerCase().contains(lowerCaseFilter)
+                        || prod.getId().toLowerCase().contains(lowerCaseFilter)
+                        || prod.getGrade().toLowerCase().contains(lowerCaseFilter)) {
+                    return true;
+                }
+                return false;
+                
+                
+                
+            };
+            flListe.setPredicate(p0);
+            
+            
+            
+                    }));
+            
+                  
+        SortedList<Employe> sortedData = new SortedList<>(flListe);
+        table.setItems(sortedData);
+            
+            
+            
+            
+       
+    }
         
         }
         

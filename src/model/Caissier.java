@@ -83,6 +83,34 @@ public class Caissier extends Employe implements InterfaceCaissier {
         Manager.em.getTransaction().commit();
         System.out.println("vente réussie");
     }
+    
+    
+     public void effectuerVente(Facture facture, LigneFacture... lignefactures) throws Exception {
+        if (facture == null ) {
+            throw new NullPointerException();
+        }
+        float somme = 0;
+        
+        /**
+         * Début de la transaction pour la sauvegarde.
+         */
+        Produit produit;
+        Manager.em.getTransaction().begin();
+        {
+            Manager.em.persist(facture);
+            if (lignefactures != null) {
+                for (LigneFacture lf : lignefactures) {
+                    produit = Manager.em.find(Produit.class, lf.getLigneFactureId().getProduitId());
+                    this.listeProduit().get(produit.getId() + " - " + produit.getNom()).setQuantite(produit.getQuantite() - lf.getQuantite());
+                    somme += lf.getPrixUnitaire() * lf.getQuantite();
+                    Manager.em.persist(lf);
+                }
+            }
+            facture.setMontant(somme);
+        }
+        Manager.em.getTransaction().commit();
+        System.out.println("vente réussie");
+    }
 
     /**
      * Hypothèses: nous supposons ici qu'ici la vente a déjà été effectuée et

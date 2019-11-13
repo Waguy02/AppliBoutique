@@ -6,7 +6,7 @@
 package Init;
 
 import dbManager.Manager;
-import javax.persistence.EntityManager;
+import outils.Outils;
 
 /**
  *
@@ -17,8 +17,9 @@ public class Init {
     
     
     public static void globalInit(){
-    Manager.ouvertureEntityManager();
         
+    Manager.ouvertureEntityManager();
+        Outils.chargementPropertiesIndex();
     
 }
 }

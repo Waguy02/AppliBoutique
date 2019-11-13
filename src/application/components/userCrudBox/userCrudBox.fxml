@@ -5,14 +5,19 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.141" fx:controller="application.layouts.admin.usersTab.userCrudBox.UserCrudBoxController">
+<AnchorPane id="AnchorPane" prefHeight="400.0" prefWidth="600.0" styleClass="mainFxmlClass" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.components.userCrudBox.UserCrudBoxController">
     <stylesheets>
         <URL value="@usercrudbox.css" />
+      <URL value="@../../global_styles/form.css" />
+      <URL value="@../../global_styles/labels.css" />
+      <URL value="@../../global_styles/main.css" />
+      <URL value="@../../global_styles/labels.css" />
+      <URL value="@../../global_styles/layouts.css" />
     </stylesheets>
    <children>
       <VBox fx:id="rootVBox" layoutX="161.0" layoutY="34.0" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
-            <AnchorPane fx:id="operationLabel" prefHeight="109.0" prefWidth="600.0" />
+            <AnchorPane fx:id="operationLabel" prefHeight="109.0" prefWidth="600.0" styleClass="titleBar" />
             <HBox fx:id="actionBox" prefHeight="100.0" prefWidth="200.0" />
          </children>
       </VBox>

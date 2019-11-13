@@ -53,7 +53,18 @@ public class MainCaissierPaneController implements Initializable {
      * 
      *Valeurs Caissier Expérimental
      */
-    private Caissier caissier = new Caissier();
+    private Caissier caissier;
+    
+    
+    
+    
+    public void initCaissier(){
+         this.caissier = new Caissier();
+         caissier.setId("000-005");
+    }
+    
+    
+    
     public void loadData() {
         this.listeProduit = FXCollections.observableArrayList(this.getCaissier().getMapProduits().values());
         for(Produit p :this.listeProduit){
@@ -194,13 +205,22 @@ public class MainCaissierPaneController implements Initializable {
         AnchorPane root = (AnchorPane) getView(loader);
         Tab saleTab = new Tab("Vente " + currentSaleCounter.toString(), root);
         SalePaneController controller;
+       
         try {
 
             controller = loader.getController();
             controller.setMainController(this);
+            controller.setCaissier(this.caissier);
             controller.customInit();
+            
             this.currentSales.add(controller);
             this.mainTabPane.getTabs().add(saleTab);
+           controller.getIsActive().addListener((ob,old,val)->{
+               System.out.println("Chanement de valeur");
+           if(!val)this.mainTabPane.getTabs().remove(saleTab);
+           }
+           );
+            
             this.mainTabPane.getSelectionModel().select(saleTab);
 
         } catch (Exception e) {
@@ -215,11 +235,11 @@ public class MainCaissierPaneController implements Initializable {
     }
 
     
-     
 
  @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+         initCaissier();
         loadData();
         initProductTab();
 

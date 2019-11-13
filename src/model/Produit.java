@@ -15,6 +15,8 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import lombok.Getter;
+import lombok.Setter;
 import outils.Outils;
 
 /**
@@ -24,6 +26,7 @@ import outils.Outils;
 @Entity
 @Table(name = "produit")
 @NamedQuery(name = "Produit.findAll", query = "SELECT p FROM Produit p")
+@Getter @Setter
 public class Produit implements Serializable, HashCode, Cloneable{
 
     private final ObjectProperty<Date> datePeremption = new SimpleObjectProperty<>();
@@ -36,14 +39,20 @@ public class Produit implements Serializable, HashCode, Cloneable{
     
     private final IntegerProperty quantite = new SimpleIntegerProperty();
     
+    
     private final FloatProperty prixUnitaire = new SimpleFloatProperty();
     
+   
     
     private final FloatProperty prixTotal=new SimpleFloatProperty();
     
+    
+  
+    
+    
    
-
     public FloatProperty getPrixTotalProperty() {
+   
         return prixTotal;
     }
     
